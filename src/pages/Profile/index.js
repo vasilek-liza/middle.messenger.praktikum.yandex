@@ -3,13 +3,13 @@ import Handlebars from "handlebars";
 import { InfoBlock } from "./components/InfoBlock";
 import { ActionsBlock } from "./components/ActionsBlock";
 import { Avatar } from "./components/Avatar";
+import { infoRows } from "./utils";
+import { Link } from "../../components/Link";
+import { Button } from "../../components/Button";
 import emptyAvatar from '../../assets/img/empty_avatar.svg';
 import './Profile.scss';
 
 import { template } from './profile.tmpl';
-import { infoRows } from "./utils";
-import { Link } from "../../components/Link";
-import { Button } from "../../components/Button";
 
 export const Profile = () =>
     Handlebars.compile(template)({

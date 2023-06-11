@@ -1,4 +1,5 @@
 import Handlebars from "handlebars";
+
 import { Link } from "../../components/Link";
 
 import { template } from './not-found.tmpl';
