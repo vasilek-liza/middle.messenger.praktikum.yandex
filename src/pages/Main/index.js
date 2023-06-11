@@ -1,9 +1,9 @@
 import Handlebars from "handlebars";
 
 import { Link } from "../../components/Link";
+import './Main.scss';
 
 import { template } from './main.tmpl';
-import './Main.scss';
 
 export const Main = () => 
     Handlebars.compile(template)({

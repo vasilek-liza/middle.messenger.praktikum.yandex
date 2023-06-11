@@ -1,7 +1,6 @@
 import Handlebars from "handlebars";
 
 import { infoRows } from "../../utils";
-
 import './InfoBlock.scss';
 
 export const InfoBlock = () => Handlebars.compile(

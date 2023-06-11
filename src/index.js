@@ -10,8 +10,6 @@ import './index.scss';
 document.addEventListener('DOMContentLoaded', () => {
     const root = document.querySelector('#app');
 
-    root.innerHTML = '';
-
     const getCurrentPages = () => {
         switch(window.location.pathname) {
             case '/login': 
