@@ -5,7 +5,7 @@ import { Input } from "../../components/Input";
 
 import { template } from './ChangePassword.tmpl';
 
-export const ChangePassword = () => 
+export const ChangePassword = () =>
     Handlebars.compile(template)({
         title: 'Изменить пароль',
         oldPassword: Input({ label: 'Старый пароль', name: 'oldPassword' }),
@@ -13,4 +13,5 @@ export const ChangePassword = () =>
         newPasswordCopy: Input({ label: 'Повторите новый пароль', name: 'newPasswordCopy'}),
         save: Button({ text: 'Сохранить' }),
     });
+    
     
