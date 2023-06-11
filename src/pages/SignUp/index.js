@@ -6,42 +6,41 @@ import { Link } from "../../components/Link";
 
 import { template } from './signUp.tmpl';
 
-export const SignUp = () => 
+export const SignUp = () =>
     Handlebars.compile(template)({
         title: 'Регистрация',
-        first_name: Input({ 
-            label: 'Имя', 
+        first_name: Input({
+            label: 'Имя',
             name: 'first_name',
         }),
-        second_name: Input({ 
-            label: 'Фамилия', 
+        second_name: Input({
+            label: 'Фамилия',
             name: 'second_name',
         }),
-        login: Input({ 
-            label: 'Логин', 
+        login: Input({
+            label: 'Логин',
             name: 'login',
         }),
-        email: Input({ 
-            label: 'Почта', 
+        email: Input({
+            label: 'Почта',
             name: 'email',
         }),
-        password: Input({ 
-            label: 'Пароль', 
+        password: Input({
+            label: 'Пароль',
             name: 'password',
         }),
-        password_copy: Input({ 
-            label: 'Пароль (ещё раз)', 
+        password_copy: Input({
+            label: 'Пароль (ещё раз)',
             name: 'password_copy',
         }),
-        phone: Input({ 
-            label: 'Телефон', 
+        phone: Input({
+            label: 'Телефон',
             name: 'phone',
         }),
         button: Button({ text: 'Зарегистрироваться' }),
-        enter_link: Link({ 
-            text: 'Войти', 
-            href: '../profile', 
+        enter_link: Link({
+            text: 'Войти',
+            href: '../profile',
             className: 'link-blue',
         }),
     });
-    

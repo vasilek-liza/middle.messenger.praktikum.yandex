@@ -5,7 +5,7 @@ import { Input } from "../../components/Input";
 
 import { template } from './changeUserData.tmpl';
 
-export const ChangeUserData = () => 
+export const ChangeUserData = () =>
     Handlebars.compile(template)({
         title: 'Изменить данные',
         first_name: Input({ label: 'Имя', name: 'first_name' }),
@@ -16,4 +16,3 @@ export const ChangeUserData = () =>
         phone: Input({ label: 'Телефон', name: 'phone'}),
         save: Button({ text: 'Сохранить' }),
     });
-    

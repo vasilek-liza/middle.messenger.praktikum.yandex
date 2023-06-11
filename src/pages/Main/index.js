@@ -5,7 +5,7 @@ import './Main.scss';
 
 import { template } from './main.tmpl';
 
-export const Main = () => 
+export const Main = () =>
     Handlebars.compile(template)({
         title: 'Messenger',
         linkProfile: Link({ text: 'Профиль', href: '/profile' }),
@@ -15,4 +15,3 @@ export const Main = () =>
         linkError: Link({ text: 'Ошибка 500', href: '/error' }),
         linkChats: Link({ text: 'Чаты', href: 'chats' }),
     });
-    
