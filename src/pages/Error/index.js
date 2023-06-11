@@ -1,11 +1,11 @@
 import Handlebars from "handlebars";
 import { Link } from "../../components/Link";
 
-import { template } from './not-found.tmpl';
+import { template } from './error.tmpl';
 
-export const NotFound = () => 
+export const Error = () => 
     Handlebars.compile(template)({
-        title: '404',
+        title: '500',
         link: Link ({ text: 'Назад к чатам', href: '../chats', className: 'link-blue' })
     });
     

@@ -2,7 +2,7 @@ export const template = `
     <div class='wrapper'>
         <div class='login'>
             <form>
-                <p class='title'>Войти</p>
+                <p class='title'>{{title}}</p>
                 {{{login}}}
                 {{{password}}}
                 {{{button}}}

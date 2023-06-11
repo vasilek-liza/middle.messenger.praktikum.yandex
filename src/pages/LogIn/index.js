@@ -7,6 +7,7 @@ import { template } from './logIn.tmpl';
 
 export const LogIn = () => 
     Handlebars.compile(template)({
+        title: 'Вход',
         login: Input({ label: 'Логин', name: 'login' }),
         password: Input({ label: 'Пароль', name: 'password'}),
         button: Button({ text: 'Авторизоваться' }),

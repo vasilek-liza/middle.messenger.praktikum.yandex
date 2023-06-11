@@ -7,6 +7,7 @@ import { template } from './signUp.tmpl';
 
 export const SignUp = () => 
     Handlebars.compile(template)({
+        title: 'Регистрация',
         first_name: Input({ label: 'Имя', name: 'first_name' }),
         second_name: Input({ label: 'Фамилия', name: 'second_name'}),
         login: Input({ label: 'Логин', name: 'login'}),
