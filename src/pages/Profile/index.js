@@ -25,17 +25,17 @@ export const Profile = () =>
             logout: Link({ 
                 text: 'Выйти', 
                 href: '../', 
-                className: 'link-red' 
+                className: 'link-red', 
             }),
             changePassword: Link({ 
                 text: 'Изменить пароль', 
                 href: '../change-password', 
-                className: 'link-blue' 
+                className: 'link-blue',
             }),
             changeUserData: Link({ 
                 text: 'Изменить данные', 
                 href: '../change-user-data',
-                className: 'link-blue' 
+                className: 'link-blue',
             }),
         }),
     });

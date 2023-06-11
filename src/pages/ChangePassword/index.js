@@ -10,15 +10,15 @@ export const ChangePassword = () =>
         title: 'Изменить пароль',
         oldPassword: Input({ 
             label: 'Старый пароль', 
-            name: 'oldPassword' 
+            name: 'oldPassword',
         }),
         newPassword: Input({ 
             label: 'Новый пароль', 
-            name: 'newPassword'
+            name: 'newPassword',
         }),
         newPasswordCopy: Input({ 
             label: 'Повторите новый пароль', 
-            name: 'newPasswordCopy'
+            name: 'newPasswordCopy',
         }),
         save: Button({ text: 'Сохранить' }),
     });

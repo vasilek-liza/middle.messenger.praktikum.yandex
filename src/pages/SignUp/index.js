@@ -9,14 +9,39 @@ import { template } from './signUp.tmpl';
 export const SignUp = () => 
     Handlebars.compile(template)({
         title: 'Регистрация',
-        first_name: Input({ label: 'Имя', name: 'first_name' }),
-        second_name: Input({ label: 'Фамилия', name: 'second_name'}),
-        login: Input({ label: 'Логин', name: 'login'}),
-        email: Input({ label: 'Почта', name: 'email'}),
-        password: Input({ label: 'Пароль', name: 'password'}),
-        password_copy: Input({ label: 'Пароль (ещё раз)', name: 'password_copy'}),
-        phone: Input({ label: 'Телефон', name: 'phone'}),
+        first_name: Input({ 
+            label: 'Имя', 
+            name: 'first_name',
+        }),
+        second_name: Input({ 
+            label: 'Фамилия', 
+            name: 'second_name',
+        }),
+        login: Input({ 
+            label: 'Логин', 
+            name: 'login',
+        }),
+        email: Input({ 
+            label: 'Почта', 
+            name: 'email',
+        }),
+        password: Input({ 
+            label: 'Пароль', 
+            name: 'password',
+        }),
+        password_copy: Input({ 
+            label: 'Пароль (ещё раз)', 
+            name: 'password_copy',
+        }),
+        phone: Input({ 
+            label: 'Телефон', 
+            name: 'phone',
+        }),
         button: Button({ text: 'Зарегистрироваться' }),
-        enter_link: Link({ text: 'Войти', href: '../profile', className: 'link-blue' }),
+        enter_link: Link({ 
+            text: 'Войти', 
+            href: '../profile', 
+            className: 'link-blue',
+        }),
     });
     

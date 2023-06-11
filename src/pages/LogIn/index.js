@@ -9,9 +9,19 @@ import { template } from './logIn.tmpl';
 export const LogIn = () => 
     Handlebars.compile(template)({
         title: 'Вход',
-        login: Input({ label: 'Логин', name: 'login' }),
-        password: Input({ label: 'Пароль', name: 'password'}),
+        login: Input({ 
+            label: 'Логин', 
+            name: 'login', 
+        }),
+        password: Input({ 
+            label: 'Пароль', 
+            name: 'password',
+        }),
         button: Button({ text: 'Авторизоваться' }),
-        signup_link: Link({ text: 'Зарегистрироваться', href: '../signup',  className: 'link-blue' }),
+        signup_link: Link({ 
+            text: 'Зарегистрироваться',
+            href: '../signup',
+            className: 'link-blue',
+        }),
     });
     
