@@ -10,6 +10,8 @@ export const template = `
                     <li class='main-page__list-item'>{{{linkNotFound}}}</li>
                     <li class='main-page__list-item'>{{{linkError}}}</li>
                     <li class='main-page__list-item'>{{{linkChats}}}</li>
+                    <li class='main-page__list-item'>{{{linkChangePassword}}}</li>
+                    <li class='main-page__list-item'>{{{linkChangeUserData}}}</li>
                 </ul>
             </nav>
         </main>

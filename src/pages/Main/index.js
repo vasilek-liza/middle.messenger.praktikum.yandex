@@ -13,5 +13,7 @@ export const Main = () =>
         linkSignup: Link({ text: 'Зарегистрироваться', href: '/signup' }),
         linkNotFound: Link({ text: 'Ошибка 404', href: '/not-found' }),
         linkError: Link({ text: 'Ошибка 500', href: '/error' }),
-        linkChats: Link({ text: 'Чаты', href: 'chats' }),
+        linkChats: Link({ text: 'Чаты', href: '/chats' }),
+        linkChangePassword: Link({ text: 'Изменить пароль', href: '/change-password' }),
+        linkChangeUserData: Link({ text: 'Изменить данные', href: '/change-user-data' }),
     });
