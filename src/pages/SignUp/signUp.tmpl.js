@@ -1,7 +1,7 @@
 export const template = `
     <div class='page-signup wrapper'>
         <div class='page-signup__content'>
-            <form class='page-signup__form>
+            <form class='page-signup__form'>
                 <p class='page-signup__description description'>{{title}}</p>
                 {{{email}}}
                 {{{login}}}
