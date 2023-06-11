@@ -32,11 +32,10 @@ export const Profile = () =>
                 href: '../change-password',
                 className: 'link-blue',
             }),
-            changeUserData: Link({ 
+            changeUserData: Link({
                 text: 'Изменить данные',
                 href: '../change-user-data',
                 className: 'link-blue',
             }),
         }),
     });
-    
