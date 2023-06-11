@@ -1,17 +1,16 @@
 import Handlebars from "handlebars";
 
-import { infoRows } from "../../utils";
 import './InfoBlock.scss';
 
-export const InfoBlock = () => Handlebars.compile(
+export const InfoBlock = ({ infoRows }) => Handlebars.compile(
     `   
-        <ul>
+        <ul class='info_block'>
             {{#each infoRows}}
-                <li class='info_row'>
-                    <span class='label'>{{this.label}}</span>
-                    <span class='value'>{{this.label}}</span>
+                <li class='info_block__item'>
+                    <span class='info_block__label'>{{this.label}}</span>
+                    <span class='info_block__value'>{{this.value}}</span>
                 </li>
             {{/each}}
         </ul>
     `
-) (infoRows);
+) ({ infoRows });

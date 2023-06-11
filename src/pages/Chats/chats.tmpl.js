@@ -1,6 +1,6 @@
 export const template = `
-    <div class='wrapper'>
-        <h1>{{title}}</h1>
-        <p class='title'>Скоро здесь будут мои чаты :)</p>
+    <div class='chats-page wrapper'>
+        <h1 class='chats-page__title'>{{title}}</h1>
+        <p class='chats-page__description descroiption'>Скоро здесь будут мои чаты :)</p>
     </div>
 `

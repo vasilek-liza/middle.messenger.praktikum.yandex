@@ -1,19 +1,22 @@
 a {
     font-size: 14px;
     color: var(--gray);
-    padding-bottom: 8px;
     display: flex;
     margin: 0 auto;
     
     &:hover {
         border-bottom: 3px solid var(--gray);
+
+        &.link-blue, &.link-red {
+            border: none;
+        }
     }
 }
 
 .link-blue {
     color: var(--blue);
+}
 
-    &:hover {
-        border: none;
-    }
+.link-red {
+    color: #FF0000;
 }

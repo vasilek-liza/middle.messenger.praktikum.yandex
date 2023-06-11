@@ -4,7 +4,7 @@ import './Button.scss';
 
 export const Button = ({ text }) => Handlebars.compile(
     `
-        <button>
+        <button class='custom-button'>
             {{text}}
         </button>
     `

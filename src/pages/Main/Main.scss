@@ -1,11 +1,11 @@
-.main__page {
+.main-page {
     margin: 28px auto;
-}
 
-ul {
-    display: flex;
-    width: 700px;
-    justify-content: space-around;
+    &__list {
+        display: flex;
+        justify-content: space-between;
+        width: 700px;
+    }
 }
 
 li {
@@ -16,7 +16,7 @@ h1 {
     margin-bottom: 36px;
 }
 
-.title {
+.description {
     text-align: center;
     font-size: 20px;
     font-weight: 500px;

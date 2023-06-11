@@ -6,6 +6,8 @@ import { Main } from './pages/Main';
 import { Error } from './pages/Error';
 import { Chats } from './pages/Chats';
 import './index.scss';
+import { ChangeUserData } from './pages/ChangeUserData';
+import { ChangePassword } from './pages/ChangePassword';
 
 document.addEventListener('DOMContentLoaded', () => {
     const root = document.querySelector('#app');
@@ -22,6 +24,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 return Chats();
             case '/error': 
                 return Error();
+            case '/change-user-data': 
+                return ChangeUserData();
+            case '/change-password': 
+                return ChangePassword();
             case '/': 
                 return Main();
             default: 

@@ -1,7 +1,7 @@
 export const template = `
-    <div class='wrapper'>
-        <h1>{{title}}</h1>
-        <p class='title'></p>Мы уже фиксим</p>
+    <div class='page-error wrapper'>
+        <h1 class='page-error__title title'>{{title}}</h1>
+        <p class='page-error__description description'></p>Мы уже фиксим</p>
         {{{link}}}
     </div>
 `

@@ -1,7 +1,7 @@
 
 ### Чат
 
-### ссылка на сайт 
+### ссылка на сайт: https://sparkling-beignet-d22662.netlify.app
 
 Для запуска команда:  
 ### npm run start

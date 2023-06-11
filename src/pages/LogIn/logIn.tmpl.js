@@ -1,8 +1,8 @@
 export const template = `
-    <div class='wrapper'>
-        <div class='login'>
-            <form>
-                <p class='title'>{{title}}</p>
+    <div class='page-login wrapper'>
+        <div class='page-login__content'>
+            <form class='page-login__form'>
+                <p class='page-login__title description'>{{title}}</p>
                 {{{login}}}
                 {{{password}}}
                 {{{button}}}

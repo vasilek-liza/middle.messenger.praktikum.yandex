@@ -1,17 +1,13 @@
 import Handlebars from "handlebars";
 
-import { infoRows } from "../../utils";
 import './ActionsBlock.scss';
 
-export const ActionsBlock = () => Handlebars.compile(
+export const ActionsBlock = ({ changeUserData, changePassword, logout }) => Handlebars.compile(
     `   
-        <ul>
-            {{#each infoRows}}
-                <li class='info_row'>
-                    <span class='label'>{{this}}</span>
-                    <span class='value'>{{this}}</span>
-                </li>
-            {{/each}}
+        <ul class='actions-block'>
+            <li class='actions-block__item'>{{{changeUserData}}}</li>
+            <li class='actions-block__item'>{{{changePassword}}}</li>
+            <li class='actions-block__item'>{{{logout}}}</li>
         </ul>
     `
-) (infoRows);
+) ({ changeUserData, changePassword, logout });

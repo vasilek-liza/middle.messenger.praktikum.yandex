@@ -1,74 +1,75 @@
-    :root {
-        --background: #E5E5E5;
-        --clr-font: #1e2027;
-        --shadow: rgba(40, 44, 53, 0.4);
-        --success: rgb(6, 117, 21);
-        --gray: #727171;
-        --danger: #df0606;
-        --white: #fff;
-        --blue: #3369F3;
-    }
+:root {
+    --background: #FFFFFF;
+    --clr-font: #1e2027;
+    --shadow: rgba(40, 44, 53, 0.4);
+    --success: rgb(6, 117, 21);
+    --gray: #727171;
+    --danger: #df0606;
+    --white: #fff;
+    --blue: #3369F3;
+}
     
-    *,
-    *:before,
-    *:after {
-        box-sizing: border-box;
-    }
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
     
-    body {
-        background: var(--background);
-        color: var(--clr-font);
-        font-size: 16px;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+body {
+    background: var(--background);
+    color: var(--clr-font);
+    font-size: 16px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
         'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
         sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     
-        scrollbar-width: thin;
-        scrollbar-color: var(--gray) transparent;
+    scrollbar-width: thin;
+    scrollbar-color: var(--gray) transparent;
     
-        &::-webkit-scrollbar {
-            width: 10px;
-        }
-    
-        &::-webkit-scrollbar-thumb {
-            background-color: var(--gray);
-        }
+    &::-webkit-scrollbar {
+        width: 10px;
     }
     
-    ul,
-    li {
-        margin: 0;
-        padding: 0;
-        list-style: none;
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--gray);
     }
+}
+    
+ul,
+li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
 
-    form {
-        background: #FFFFFF;
-        box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.14);
-        border-radius: 12px;
-        display: flex;
-        flex-direction: column;
-        padding: 50px 30px;
-        min-width: 340px;
-        min-height: 460px;
-    }
+form {
+    background: #FFFFFF;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.14);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    padding: 50px 30px;
+    min-width: 500px;
+    min-height: 460px;
+}
     
-    button {
-        margin: 0;
-        padding: 0;
-        outline: none;
-        border: none;
-        cursor: pointer;
-    }
-
-    input {
+button {
+    margin: 0;
+    padding: 0;
     outline: none;
     border: none;
-    }
+    cursor: pointer;
+}
+
+input {
+    outline: none;
+    border: none;
+}
     
-    a {
+a {
     text-decoration: none;
     color: inherit;
-    }
+    padding: 0;
+}
