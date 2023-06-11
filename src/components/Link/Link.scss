@@ -12,4 +12,8 @@ a {
 
 .link-blue {
     color: var(--blue);
+
+    &:hover {
+        border: none;
+    }
 }
