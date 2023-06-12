@@ -17,7 +17,7 @@ export const LogIn = () =>
             label: 'Пароль',
             name: 'password',
         }),
-        button: Button({ text: 'Авторизоваться', type: 'submit'  }),
+        button: Button({ text: 'Авторизоваться', type: 'submit' }),
         signup_link: Link({
             text: 'Зарегистрироваться',
             href: '../signup',
