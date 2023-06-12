@@ -14,5 +14,5 @@ export const ChangeUserData = () =>
         email: Input({ label: 'Почта', name: 'email'}),
         display_name: Input({ label: 'Имя в чате', name: 'display_name'}),
         phone: Input({ label: 'Телефон', name: 'phone'}),
-        save: Button({ text: 'Сохранить' }),
+        save: Button({ text: 'Сохранить', type: 'submit'  }),
     });

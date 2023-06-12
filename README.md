@@ -1,7 +1,11 @@
 
-### Чат
+### учебный проект: веб-приложение "Чат"
 
-### ссылка на сайт: https://sparkling-beignet-d22662.netlify.app
+### ссылка на задеплоенный проект: https://sparkling-beignet-d22662.netlify.app
+
+Используемые технологии: 
+
+JavaScript, SCSS, Vite, Express, Handlebars
 
 Для запуска команда:  
 ### npm run start
@@ -26,5 +30,3 @@ ui взят из готовых решений https://www.figma.com/file/gInPV4
 Изменить пароль https://sparkling-beignet-d22662.netlify.app/change-password
 
 Изменить профиль https://sparkling-beignet-d22662.netlify.app/change-user-data
-
-[ссылка на пр Sprint 1](https://github.com/vasilek-liza/middle.messenger.praktikum.yandex/pull/2)

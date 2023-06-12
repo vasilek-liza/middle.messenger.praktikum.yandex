@@ -20,5 +20,5 @@ export const ChangePassword = () =>
             label: 'Повторите новый пароль', 
             name: 'newPasswordCopy',
         }),
-        save: Button({ text: 'Сохранить' }),
+        save: Button({ text: 'Сохранить', type: 'submit' }),
     });

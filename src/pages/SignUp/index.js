@@ -37,7 +37,7 @@ export const SignUp = () =>
             label: 'Телефон',
             name: 'phone',
         }),
-        button: Button({ text: 'Зарегистрироваться' }),
+        button: Button({ text: 'Зарегистрироваться', type: 'submit'  }),
         enter_link: Link({
             text: 'Войти',
             href: '../profile',
