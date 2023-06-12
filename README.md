@@ -7,6 +7,8 @@
 
 JavaScript, SCSS, Vite, Express, Handlebars
 
+Версия node, необходимая для нормальной работоспособности: v18.13.0
+
 Для запуска команда:  
 ### npm run start
 
