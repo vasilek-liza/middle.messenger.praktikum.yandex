@@ -2,7 +2,14 @@ import Handlebars from "handlebars";
 
 import './Avatar.scss';
 
-export const Avatar = ({ image, userName, alt, save }) => Handlebars.compile(
+interface IAvatarProps {
+    image: string,
+    userName: string,
+    alt: string,
+    save: string,
+}
+
+export const Avatar = ({ image, userName, alt, save }: IAvatarProps) => Handlebars.compile(
     `   
         <div class="user-avatar">
             <form class="user-avatar__change-avatar">

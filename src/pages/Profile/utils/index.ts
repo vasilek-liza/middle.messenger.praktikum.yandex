@@ -1,4 +1,9 @@
-export const infoRows = [
+export interface IInfoRow {
+    label: string,
+    value: string,
+}
+
+export const infoRows: IInfoRow[] = [
     { label: 'Почта', value: 'pochta@yandex.ru' },
     { label: 'Логин', value: 'ivanivanov' },
     { label: 'Имя', value: 'Иван' },

@@ -1,8 +1,13 @@
 import Handlebars from "handlebars";
+import { IInfoRow } from "../../utils";
 
 import './InfoBlock.scss';
 
-export const InfoBlock = ({ infoRows }) => Handlebars.compile(
+interface IInfoBlockProps {
+    infoRows: IInfoRow[],
+}
+
+export const InfoBlock = ({ infoRows }: IInfoBlockProps) => Handlebars.compile(
     `   
         <ul class='info_block'>
             {{#each infoRows}}

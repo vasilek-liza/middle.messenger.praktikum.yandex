@@ -35,5 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    root.innerHTML = getCurrentPages();
+    if(root) {
+        root.innerHTML = getCurrentPages();
+    }
 })

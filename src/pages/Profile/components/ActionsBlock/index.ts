@@ -2,7 +2,13 @@ import Handlebars from "handlebars";
 
 import './ActionsBlock.scss';
 
-export const ActionsBlock = ({ changeUserData, changePassword, logout }) => Handlebars.compile(
+interface IActionsBlockProps {
+    changeUserData: string,
+    changePassword: string,
+    logout: string
+}
+
+export const ActionsBlock = ({ changeUserData, changePassword, logout }: IActionsBlockProps) => Handlebars.compile(
     `   
         <ul class='actions-block'>
             <li class='actions-block__item'>{{{changeUserData}}}</li>
