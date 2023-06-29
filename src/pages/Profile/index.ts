@@ -2,7 +2,7 @@ import Handlebars from "handlebars";
 
 import { InfoBlock } from "./components/InfoBlock";
 import { ActionsBlock } from "./components/ActionsBlock";
-import { Avatar } from "./components/Avatar";
+import { AvatarProfile } from "./components/AvatarProfile";
 import { infoRows } from "./utils";
 import { Link } from "../../components/Link";
 import { Button } from "../../components/Button";
@@ -10,16 +10,16 @@ import emptyAvatar from '../../assets/img/empty_avatar.svg';
 import './Profile.scss';
 
 import { template } from './profile.tmpl';
+import { Avatar } from "../../components/Avatar";
 
 export const Profile = () =>
     Handlebars.compile(template)({
         title: 'Профиль',
         info: InfoBlock({ infoRows }),
-        avatar: Avatar({
+        avatar: AvatarProfile({
             userName: 'Иван',
-            image: `${emptyAvatar}`,
-            alt: 'avatar',
             save: Button({ text: 'Поменять' }),
+            avatar: Avatar({ image: `${emptyAvatar}`, alt: 'avatar' })
         }),
         actions: ActionsBlock({
             logout: Link({

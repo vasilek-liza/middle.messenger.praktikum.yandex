@@ -14,7 +14,7 @@ const METHODS: Record<string, string> = {
     
 function queryStringify(data: Record<string, unknown>) {
     if (typeof data !== 'object') {
-        throw new Error('Data must be object');
+        throw new Error('error');
     }
 
     const keys = Object.keys(data);
@@ -57,7 +57,11 @@ export class HTTPTransport {
     };
     
     request = (url: string, options: RequestOptions = {}, timeout = 5000) => {
-        const { headers = {}, method, data } = options;
+        const { 
+            headers = {}, 
+            method, 
+            data 
+        } = options;
     
         return new Promise(function (resolve, reject) {
             if (!method) {
@@ -77,12 +81,11 @@ export class HTTPTransport {
             xhr.onload = function () {
                 resolve(xhr);
             };
-  
             xhr.onabort = reject;
             xhr.onerror = reject;
-    
-            xhr.timeout = timeout;
             xhr.ontimeout = reject;
+
+            xhr.timeout = timeout;
     
             if (isGet || !data) {
                 xhr.send();

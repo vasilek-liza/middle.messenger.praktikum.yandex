@@ -1,6 +1,6 @@
 import Handlebars from 'handlebars';
 
-import EventBus from './EventBus';
+import  { EventBus } from './EventBus';
 import { nanoid } from 'nanoid';
 
 export class Block<P extends Record<string, any> = any> {
@@ -25,7 +25,7 @@ export class Block<P extends Record<string, any> = any> {
      * @returns {void}
      */
 
-    constructor(tagName = "div", propsWithChildren: P) {
+    constructor(tagName: string = "div", propsWithChildren: P) {
         const eventBus = new EventBus();
         const {
             props,
@@ -140,9 +140,34 @@ export class Block<P extends Record<string, any> = any> {
     private _render() {
         const fragment = this.render();
         this._element!.innerHTML = '';
-        this._element!.append(fragment);
-        this._addEvents();
+        this._element!.append(`${fragment}`);
+        const input = this._element!.querySelector('input');
+        const textarea = this._element!.querySelector('textarea');
+        this._addEvents(input ?? textarea);
     }
+
+    _compile(template: string, context: Record<string, any>): DocumentFragment {
+        const contextAndStubs = { ...context };
+        const temp = document.createElement('template');
+        Object.entries(this.children).forEach(([name, component]) => {
+            contextAndStubs[name] = `<div data-id="${component.id}"></div>`;
+        });
+        const html = Handlebars.compile(template)(contextAndStubs);
+
+        temp.innerHTML = html;
+    
+        Object.entries(this.children).forEach(([id, component]) => {
+            const stub = temp.content.querySelector(`[data-id="${id}"]`);
+    
+            if (!stub) {
+                return;
+            }
+    
+            stub.replaceWith(component.getContent()!);
+        });
+    
+            return temp.content;
+        }
     
     render() {}
     

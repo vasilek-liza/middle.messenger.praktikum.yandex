@@ -1,4 +1,4 @@
 export const template = `
     <label for={{name}} class='custom-label'>{{label}}</label>
-    <input type="text" class='custom-input' name={{name}}>
+    <input type="text" class='custom-input {{className}}' name={{name}} placeholder={{placeholder}}>
 `

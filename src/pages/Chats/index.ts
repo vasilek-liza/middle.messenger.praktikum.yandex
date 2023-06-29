@@ -1,8 +1,11 @@
 import Handlebars from "handlebars";
 
 import { Link } from "../../components/Link";
+import { CurrentChat } from "./component/CurrentChat";
+import { ChatList } from "./component/ChatList";
 
 import { template } from './chats.tmpl';
+import './Chats.scss';
 
 export const Chats = () =>
     Handlebars.compile(template)({
@@ -12,4 +15,6 @@ export const Chats = () =>
             href: '../chats',
             className: 'link-blue',
         }),
+        chatList: ChatList(),
+        currentChat: CurrentChat()
     });

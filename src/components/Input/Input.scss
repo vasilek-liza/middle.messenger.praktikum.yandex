@@ -8,3 +8,13 @@ input.custom-input {
 .custom-label {
     color: #999999;
 }
+
+input.grey-input {
+    background-color: #EFEFEF;
+    color: #999999;
+    width: 100%;
+    border-radius: 15px;
+    padding: 12px;
+    border: none;
+    margin: 0;
+}

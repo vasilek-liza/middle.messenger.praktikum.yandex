@@ -1,15 +1,14 @@
 import Handlebars from "handlebars";
 
-import './Avatar.scss';
+import './AvatarProfile.scss';
 
 interface IAvatarProps {
-    image: string,
     userName: string,
-    alt: string,
     save: string,
+    avatar: string,
 }
 
-export const Avatar = ({ image, userName, alt, save }: IAvatarProps) => Handlebars.compile(
+export const AvatarProfile = ({ userName, save, avatar }: IAvatarProps) => Handlebars.compile(
     `   
         <div class="user-avatar">
             <form class="user-avatar__change-avatar">
@@ -19,8 +18,8 @@ export const Avatar = ({ image, userName, alt, save }: IAvatarProps) => Handleba
                     {{{save}}}
                 </div>
             </form>
-            <img class="user-avatar__avatar" src={{image}} alt={{alt}} />
+            {{{avatar}}}
             <p class="user-avatar__name">{{userName}}</p>
         </div>
     `
-) ({ image, userName, alt, save });
+) ({ userName, save, avatar });

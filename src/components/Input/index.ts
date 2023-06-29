@@ -4,12 +4,16 @@ import { template } from './Input.tmpl';
 import './Input.scss';
 
 interface IInputProps {
-    label: string,
     name: string,
+    placeholder?: string,
+    label?: string,
+    className?: string
 }
 
-export const Input = ({ label, name }: IInputProps) => 
+export const Input = ({ name, placeholder, label, className }: IInputProps) => 
     Handlebars.compile(template)({
         label,
-        name
+        name,
+        placeholder,
+        className
     });
