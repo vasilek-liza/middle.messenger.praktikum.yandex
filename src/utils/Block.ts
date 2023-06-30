@@ -12,7 +12,7 @@ export class Block<P extends Record<string, any> = any> {
     } as const;
     
     public id = nanoid(6);
-    private eventBus = () => EventBus;
+    private eventBus = () => new EventBus();
     private _element: HTMLElement | null = null;
     private _meta: { tagName: string; props: P};
     protected props: P;
@@ -62,6 +62,14 @@ export class Block<P extends Record<string, any> = any> {
         return { props: props as P, children }
 
     }
+    hideErrorMessage(inputElem: HTMLInputElement) {
+        const parentElem = inputElem.parentElement;
+        const errorElem = parentElem?.querySelector(
+        '#text-field-error'
+        ) as HTMLElement;
+        errorElem.style.visibility = 'hidden';
+    }
+
 
     _addEvents(input: HTMLElement | null) {
         const { events = {} } = (this.props as any).events;
@@ -95,8 +103,8 @@ export class Block<P extends Record<string, any> = any> {
     
     private _init() {
         this._createResources();
-        this._init();
-        this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
+        this.init();
+        // this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
 
     protected init() {};
@@ -148,28 +156,30 @@ export class Block<P extends Record<string, any> = any> {
 
     _compile(template: string, context: Record<string, any>): DocumentFragment {
         const contextAndStubs = { ...context };
-        const temp = document.createElement('template');
         Object.entries(this.children).forEach(([name, component]) => {
             contextAndStubs[name] = `<div data-id="${component.id}"></div>`;
         });
         const html = Handlebars.compile(template)(contextAndStubs);
-
+        const temp = document.createElement('template');
         temp.innerHTML = html;
     
-        Object.entries(this.children).forEach(([id, component]) => {
-            const stub = temp.content.querySelector(`[data-id="${id}"]`);
+        Object.entries(this.children).forEach(([_, component]) => {
+            const stub = temp.content.querySelector(`[data-id="${component.id}"]`);
     
             if (!stub) {
                 return;
             }
+            
+            component.getContent()?.append(...Array.from(stub.childNodes));
     
             stub.replaceWith(component.getContent()!);
         });
+        return temp.content;
+    }
     
-            return temp.content;
-        }
-    
-    render() {}
+    render() {
+        return new DocumentFragment()
+    }
     
     getContent() {
         return this.element;

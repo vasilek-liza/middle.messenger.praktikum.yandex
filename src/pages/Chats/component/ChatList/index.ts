@@ -9,11 +9,11 @@ import './ChatList.scss';
 
 export const ChatList = () =>
     Handlebars.compile(template)({
-        link: Link ({
+        link: new Link ({
             text: 'Мой профиль',
             href: '../profile',
             className: 'link-follow',
-        }),
+        }).render(),
         search: Input({
             placeholder: 'Поиск',
             name: 'search',

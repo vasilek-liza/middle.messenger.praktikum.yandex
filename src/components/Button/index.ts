@@ -2,15 +2,14 @@ import Handlebars from "handlebars";
 
 import './Button.scss';
 
-interface IButtonProps {
-    text: string,
-    type?: string,
-}
-
-export const Button = ({ text, type }: IButtonProps) => Handlebars.compile(
+export const Button = ({ 
+    text, 
+    type,
+    onClick
+}: any) => Handlebars.compile(
     `
-        <button class='custom-button' type={{type}}>
+        <button class='custom-button' {{onClick}}>
             {{text}}
         </button>
     `
-) ({ text, type });
+) ({ text, type, onClick });
