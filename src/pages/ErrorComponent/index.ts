@@ -1,15 +1,14 @@
-import { Link } from "../../components/Link";
-import { Block } from "../../utils/Block";
+import Link from "../../components/Link";
+import Block from "../../utils/Block";
 
 import { template } from './error.tmpl';
 
-export class ErrorComponent extends Block {
-    constructor(props = {}) {
-        super('div', props);
+export default class ErrorComponent extends Block {
+    constructor(props: { title: string }) {
+        super(props);
     }
 
-
-    init() {
+    protected initChildren() {
         this.children.link = new Link({
             text: 'Назад к чатам',
             href: '../chats',
@@ -18,13 +17,6 @@ export class ErrorComponent extends Block {
     }
 
     render() {
-        console.log(this.children.link)
-        return this._compile(`
-        <div class='page-error wrapper'>
-            <h1 class='page-error__title title'>500</h1>
-            <p class='page-error__description description'>Мы уже фиксим</p>
-            {{{link}}}
-        </div>
-    `, this.props);
+        return this.compile(template, { ...this.props })
     }
 }

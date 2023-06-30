@@ -1,14 +1,17 @@
-import { Link } from "../../components/Link";
-import { Block } from "../../utils/Block";
+import Link from "../../components/Link";
+import Block from "../../utils/Block";
 
 import { template } from './not-found.tmpl';
 
-export class NotFound extends Block {
-    constructor(props: { title: string }) {
-        super('div', props)
+interface INotFoundProps {
+    title: string;
+}
+export default class NotFound extends Block {
+    constructor(props: INotFoundProps) {
+        super(props);
     }
 
-    init() {
+    protected initChildren(): void {
         this.children.link = new Link({
             text: 'Назад к чатам',
             href: '../chats',
@@ -17,7 +20,7 @@ export class NotFound extends Block {
     }
 
     render() {
-        return this._compile(template, this.props)
+        return this.compile(template, { ...this.props })
     };
 }
     

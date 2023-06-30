@@ -1,40 +1,40 @@
-import { Button } from "../../components/Button";
-import { Input } from "../../components/Input";
-import { Link } from "../../components/Link";
-import { Block } from "../../utils/Block";
+import Button from "../../components/Button";
+import Input from "../../components/Input";
+import Link from "../../components/Link";
+import Block from "../../utils/Block";
 
 import { template } from './logIn.tmpl';
 
-export class LogIn extends Block {
-    constructor(props = {}) {
-        super('div', props)
+export default class LogIn extends Block {
+    constructor(props: { title: string }) {
+        super(props)
     }
 
-    init() {
-        this.children.link = new Link({
-            text: 'Назад к чатам',
-            href: '../chats',
-            className: 'link-blue', 
+    protected initChildren() {
+        this.children.login = new Input({
+            label: 'Логин',
+            name: 'login',
+        });
+        this.children.password = new Input({
+            label: 'Пароль',
+            name: 'password',
+        }),
+        this.children.button = new Button({ 
+            text: 'Авторизоваться', 
+            type: 'submit' 
+        }),
+        this.children.signup_link = new Link({
+            text: 'Зарегистрироваться',
+            href: '../signup',
+            className: 'link-blue',
         })
+        this.children.login = new Input({
+            label: 'Логин',
+            name: 'login',
+        });
     }
 
     render() {
-        return this._compile(template, {
-            title: 'Вход',
-            login: Input({
-                label: 'Логин',
-                name: 'login',
-            }),
-            password: Input({
-                label: 'Пароль',
-                name: 'password',
-            }),
-            button: Button({ text: 'Авторизоваться', type: 'submit' }),
-            signup_link: new Link({
-                text: 'Зарегистрироваться',
-                href: '../signup',
-                className: 'link-blue',
-            }).render()
-        })
+        return this.compile(template, {...this.props})
     };
 }

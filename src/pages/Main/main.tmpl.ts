@@ -1,6 +1,6 @@
 export const template = `
     <div class='main-page wrapper'>
-        <h1 class='main-page__title'>{{{title}}}</h1>
+        <h1 class='main-page__title'>Messenger</h1>
         <main class='main-page__content'>
             <nav class='main-page__navigation'>
                 <ul class='main-page__list'>

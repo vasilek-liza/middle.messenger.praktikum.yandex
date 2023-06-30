@@ -1,54 +1,51 @@
-import { NotFound } from './pages/NotFounded';
-import { Profile } from './pages/Profile';
-import { LogIn } from './pages/LogIn';
-import { SignUp } from './pages/SignUp';
-import { Main } from './pages/Main';
-import { ErrorComponent } from './pages/ErrorComponent';
-import { Chats } from './pages/Chats';
+import { renderDom } from "./utils/renderDom";
+import { chatsList } from "./pages/Chats/component/ChatList/utils";
+import NotFound from './pages/NotFounded';
+import Profile from './pages/Profile';
+import LogIn from './pages/LogIn';
+import SignUp from './pages/SignUp';
+import Main from './pages/Main';
+import ErrorComponent from './pages/ErrorComponent';
+import Chats from './pages/Chats';
+import ChangeUserData from './pages/ChangeUserData';
+import ChangePassword from './pages/ChangePassword';
 import './index.scss';
-import { ChangeUserData } from './pages/ChangeUserData';
-import { ChangePassword } from './pages/ChangePassword';
-import { Link } from './components/Link';
 
 document.addEventListener('DOMContentLoaded', () => {
-    const root = document.querySelector('#app');
 
-    root!.innerHTML = '';
+    const LogInPage = new LogIn({ title: 'Войти' });
+    const SignUpPage = new SignUp({ title: 'Регистрация' });
+    const ProfilePage = new Profile({ title: 'Профиль'});
+    const ChatsPage = new Chats({ title: 'Чаты' });
+    const ErrorComponentPage = new ErrorComponent({ title: '500'});
+    const ChangeUserDataPage = new ChangeUserData({ title: 'Изменить данные' });
+    const ChangePasswordPage = new ChangePassword({ title: 'Изменить пароль'});
+    const NotFoundPage = new NotFound({ title: '404'});
 
     const getCurrentPages = () => {
+
         switch(window.location.pathname) {
             case '/login': 
-                return new LogIn().render();
+                return LogInPage;
             case '/signup': 
-                return new SignUp().render();
+                return SignUpPage;
             case '/profile': 
-                return new Profile().render();
+                return ProfilePage;
             case '/chats': 
-                return new Chats().render();
+                return ChatsPage;
             case '/error': 
-                return new ErrorComponent().render();
+                return ErrorComponentPage;
             case '/change-user-data': 
-                return new ChangeUserData().render();
+                return ChangeUserDataPage;
             case '/change-password': 
-                return new ChangePassword().render();
+                return ChangePasswordPage;
             case '/': 
-                return new Main({
-                    title: 'Messenger',
-                    linkProfile: new Link({ text: 'Профиль', href: '/profile' }).render,
-                    linkLogIn: new Link({ text: 'Войти', href: '/login' }).render(),
-                    linkSignup: new Link({ text: 'Зарегистрироваться', href: '/signup' }).render(),
-                    linkNotFound: new Link({ text: 'Ошибка 404', href: '/not-found' }).render(),
-                    linkError: new Link({ text: 'Ошибка 500', href: '/error' }).render(),
-                    linkChats: new Link({ text: 'Чаты', href: '/chats' }).render(),
-                    linkChangePassword: new Link({ text: 'Изменить пароль', href: '/change-password' }).render(),
-                    linkChangeUserData: new Link({ text: 'Изменить данные', href: '/change-user-data' }).render(),
-                }).render();
+            return new Main;
             default: 
-                return new NotFound({ title: '404'}).render();
+                return NotFoundPage;
         }
     }
     
-    if(root) {
-        root.append(getCurrentPages());
-    }
+    renderDom("#app", getCurrentPages());
+
 })

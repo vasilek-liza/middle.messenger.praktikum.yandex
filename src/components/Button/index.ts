@@ -1,15 +1,20 @@
-import Handlebars from "handlebars";
-
+import Block from "../../utils/Block";
 import './Button.scss';
 
-export const Button = ({ 
-    text, 
-    type,
-    onClick
-}: any) => Handlebars.compile(
-    `
-        <button class='custom-button' {{onClick}}>
-            {{text}}
-        </button>
-    `
-) ({ text, type, onClick });
+import { template } from './Button.tmpl';
+
+interface IButtonProps {
+    text: string,
+    type?: string,
+    onClick?: (e: any) => void
+}
+
+export default class Button extends Block {
+    constructor(props: IButtonProps) {
+        super(props);
+    }
+    
+    render() {
+        return this.compile(template, {...this.props });
+    }
+}

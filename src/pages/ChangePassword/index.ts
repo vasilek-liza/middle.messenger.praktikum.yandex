@@ -1,38 +1,30 @@
-import { Button } from "../../components/Button";
-import { Input } from "../../components/Input";
-import { Link } from "../../components/Link";
-import { Block } from "../../utils/Block";
+import Button from "../../components/Button";
+import Input from "../../components/Input";
+import Block from "../../utils/Block";
 
 import { template } from './ChangePassword.tmpl';
-export class ChangePassword extends Block {
-    constructor(props = {}) {
-        super('div', props)
+export default class ChangePassword extends Block {
+    constructor(props: { title: string }) {
+        super(props)
     }
 
-    init() {
-        this.children.link = new Link({
-            text: 'Назад к чатам',
-            href: '../chats',
-            className: 'link-blue', 
-        })
+    protected initChildren() {
+        this.children.oldPassword = new Input({ 
+            label: 'Старый пароль', 
+            name: 'oldPassword',
+        });
+        this.children.newPassword = new Input({ 
+            label: 'Новый пароль', 
+            name: 'newPassword',
+        });
+        this.children.newPasswordCopy = new Input({ 
+            label: 'Повторите новый пароль', 
+            name: 'newPasswordCopy',
+        });
+        this.children.save = new Button({ text: 'Сохранить', type: 'submit' });
     }
 
     render() {
-        return this._compile(template, {
-            title: 'Изменить пароль',
-            oldPassword: Input({ 
-                label: 'Старый пароль', 
-                name: 'oldPassword',
-            }),
-            newPassword: Input({ 
-                label: 'Новый пароль', 
-                name: 'newPassword',
-            }),
-            newPasswordCopy: Input({ 
-                label: 'Повторите новый пароль', 
-                name: 'newPasswordCopy',
-            }),
-            save: Button({ text: 'Сохранить', type: 'submit' }),
-        })
+        return this.compile(template, {...this.props})
     };
 }

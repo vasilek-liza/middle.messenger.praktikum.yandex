@@ -1,36 +1,34 @@
-import Handlebars from "handlebars";
-
-import { Link } from "../../components/Link";
-import { CurrentChat } from "./component/CurrentChat";
-import { ChatList } from "./component/ChatList";
-
-import { Block } from "../../utils/Block";
+import Link from "../../components/Link";
+import CurrentChat from "./component/CurrentChat";
+import ChatList from "./component/ChatList";
+import Block from "../../utils/Block";
+import { chatsList } from "./component/ChatList/utils";
+import imgSend from "../../assets/img/send.svg";
+import './Chats.scss';
 
 import { template } from './chats.tmpl';
-import './Chats.scss';
-export class Chats extends Block {
-    constructor(props = {}) {
-        super('div', props)
+export default class Chats extends Block {
+    constructor(props: { title: string }) {
+        super(props);
     }
 
-    init() {
-        this.children.link = new Link({
+    protected initChildren(): void {
+        this.children.currentChat = new CurrentChat({ 
+            userProfile: chatsList[0].name,
+            incomingMessages: chatsList[0].incomingMessages,
+            outgoingMessages: chatsList[0].outgoingMessages,
+            imgSend: imgSend
+        });
+        this.children.chatList = new ChatList({ chatsList }),
+        this.children.link = new Link ({
             text: 'Назад к чатам',
             href: '../chats',
-            className: 'link-blue', 
+            className: 'link-blue',
         })
     }
 
     render() {
-        return this._compile(template, {
-            title: 'Чаты',
-            link: new Link ({
-                text: 'Назад к чатам',
-                href: '../chats',
-                className: 'link-blue',
-            }).render(),
-            chatList: ChatList(),
-            currentChat: CurrentChat()
-        })
-    }
+        return this.compile(template, { ...this.props })
+    };
 }
+    

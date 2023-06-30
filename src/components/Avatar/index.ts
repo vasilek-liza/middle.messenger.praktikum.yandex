@@ -1,14 +1,19 @@
-import Handlebars from "handlebars";
-
+import Block from "../../utils/Block";
 import './Avatar.scss';
+
+import { template } from './Avatar.tmpl';
 
 interface IAvatarProps {
     image: string,
     alt?: string,
 }
 
-export const Avatar = ({ image, alt }: IAvatarProps) => Handlebars.compile(
-    `
-        <img class="avatar" src={{image}} alt={{alt}} />
-    `
-) ({ image, alt });
+export default class Avatar extends Block {
+    constructor(props: IAvatarProps) {
+        super(props);
+    }
+    
+    render() {
+        return this.compile(template, {...this.props });
+    }
+}

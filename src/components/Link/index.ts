@@ -1,4 +1,4 @@
-import { Block } from "../../utils/Block";
+import Block from "../../utils/Block";
 
 import { template } from './Link.tmpl';
 import './Link.scss';
@@ -8,13 +8,13 @@ interface ILinkProps {
     href: string,
     className?: string,
 }
-export class Link extends Block {
+export default class Link extends Block {
     constructor(props: ILinkProps) {
-        super('div', props);
+        super(props);
     }
     
     render() {
-        return this._compile(template, this.props);
+        return this.compile(template, {...this.props });
     }
 }
     

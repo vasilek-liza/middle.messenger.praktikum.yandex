@@ -1,21 +1,29 @@
-import Handlebars from "handlebars";
-
-import { chatsList } from "../ChatList/utils";
-import { Input } from "../../../../components/Input";
-import imgSend from "../../../../assets/img/send.svg";
+import { MessageData } from "../ChatList/utils";
+import Input from "../../../../components/Input";
 
 import { template } from './CurrentChat.tmpl';
 import './CurrentChat.scss';
+import Block from "../../../../utils/Block";
 
-export const CurrentChat = () =>
-    Handlebars.compile(template)({
-        userPlofile: chatsList[0].name,
-        incomingMessages: chatsList[0].incomingMessages,
-        outgoingMessages: chatsList[0].outgoingMessages,
-        messageInput: Input({
+export default class CurrentChat extends Block {
+    constructor(props: { 
+        userProfile: string;
+        incomingMessages?: MessageData[];
+        outgoingMessages?: MessageData[];
+        imgSend: string
+    }) {
+        super(props)
+    }
+
+    protected initChildren(): void {
+        this.children.messageInput = new Input({
             name: 'message',
             placeholder: 'Сообщение',
             className: 'grey-input'
-        }),
-        imgSend: imgSend
-    });
+        });
+    }
+
+    render() {
+        return this.compile(template, {...this.props})
+    };
+}
