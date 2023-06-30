@@ -1,7 +1,7 @@
 export const template = `
     <div class='page-change-user-data wrapper'>
         <div class='page-change-user-data__content'>
-            <form class='page-change-user-data__form'>
+            <form class='page-change-user-data__form' id='form-change-data'>
                 <p class='page-change-user-data__description description'>{{title}}</p>
                 {{{email}}}
                 {{{login}}}
@@ -10,6 +10,7 @@ export const template = `
                 {{{display_name}}}
                 {{{phone}}}
                 {{{save}}}
+                <span class='error' id="error"></span>
             </form>
         </div>
     </div>

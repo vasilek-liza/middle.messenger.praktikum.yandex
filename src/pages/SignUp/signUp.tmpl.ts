@@ -1,7 +1,7 @@
 export const template = `
     <div class='page-signup wrapper'>
         <div class='page-signup__content'>
-            <form class='page-signup__form'>
+            <form class='page-signup__form' id='form-sign'>
                 <p class='page-signup__description description'>{{title}}</p>
                 {{{email}}}
                 {{{login}}}
@@ -10,6 +10,7 @@ export const template = `
                 {{{phone}}}
                 {{{password}}}
                 {{{password_copy}}}
+                <span class='error' id="error"></span>
                 {{{button}}}
                 {{{enter_link}}}
             </form>

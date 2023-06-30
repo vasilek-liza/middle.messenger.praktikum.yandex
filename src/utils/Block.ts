@@ -2,6 +2,7 @@ import Handlebars from 'handlebars';
 import EventBus from "./EventBus";
 import { nanoid } from "nanoid";
 
+type Props = Record<string, any>
 export default class Block {
   static EVENTS = {
     INIT: "init",
@@ -13,14 +14,14 @@ export default class Block {
   public id = nanoid(6);
 
   private _element: HTMLElement | null = null;
-  private _meta: { props: any };
+  // private _meta: { props: Props }; 
 
-  protected props: any;
+  protected props: Props;
   protected children: Record<string, Block>;
 
   private eventBus: () => EventBus;
 
-  constructor(propsAndChildren: any = {}) {
+  constructor(propsAndChildren: Props = {}) {
     const eventBus = new EventBus();
 
     const { props, children } = this.getChildren(propsAndChildren);
@@ -29,9 +30,7 @@ export default class Block {
 
     this.initChildren();
 
-    this._meta = {
-      props,
-    };
+    // this._meta = { props };
 
     this.props = this._makePropsProxy(props);
 
@@ -41,9 +40,9 @@ export default class Block {
     eventBus.emit(Block.EVENTS.INIT);
   }
 
-  getChildren(propsAndChildren: any) {
-    const children: any = {};
-    const props: any = {};
+  getChildren(propsAndChildren: Props) {
+    const children: Props = {};
+    const props: Props = {};
 
     Object.entries(propsAndChildren).map(([key, value]) => {
       if (value instanceof Block) {
@@ -82,18 +81,19 @@ export default class Block {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
   }
 
-  private _componentDidUpdate(oldProps: any, newProps: any) {
-    const response = this.componentDidUpdate(oldProps, newProps);
+  private _componentDidUpdate(oldProps: unknown, newProps: unknown) {
     if (this.componentDidUpdate(oldProps, newProps)) {
       this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
   }
 
-  componentDidUpdate(oldProps, newProps) {
+  componentDidUpdate(oldProps: unknown, newProps: unknown) {
+    // вывела в консоль чтобы линтер не ругался, что я их пока не использую
+    console.log(oldProps, newProps)
     return true;
   }
 
-  setProps = (nextProps) => {
+  setProps = (nextProps: Props) => {
     if (!nextProps) {
       return;
     }
@@ -127,7 +127,7 @@ export default class Block {
     return this.element;
   }
 
-  _makePropsProxy(props: any) {
+  _makePropsProxy(props: Props) {
     const self = this;
 
     return new Proxy(props as unknown as object, {
@@ -153,7 +153,7 @@ export default class Block {
   }
 
   _addEvents() {
-    const events: Record<string, () => void> = (this.props as any).events;
+    const events: Record<string, () => void> = (this.props as Props).events;
 
     if (!events) {
       return;
@@ -165,23 +165,19 @@ export default class Block {
   }
 
   _removeEvents() {
-    const events: Record<string, () => void> = (this.props as any).events;
+    const events: Record<string, () => void> = (this.props as Props).events;
 
     if (!events || !this._element) {
       return;
     }
   }
 
-  compile(template: string, context: any) {
-    const fragment = this._createDocumentElement(
-      "template"
-    ) as HTMLTemplateElement;
+  compile(template: string, context: Props) {
+    const fragment = this._createDocumentElement("template") as HTMLTemplateElement;
 
     Object.entries(this.children).forEach(([key, child]) => {
       if (Array.isArray(child)) {
-        context[key] = child.map(
-          (ch) => `<div data-id="id-${child.id}"></div>`
-        );
+        context[key] = child.map((ch) => `<div data-id="id-${ch.id}"></div>`);
 
         return;
       }
@@ -195,7 +191,7 @@ export default class Block {
 
     Object.entries(this.children).forEach(([key, child]) => {
       if (Array.isArray(child)) {
-        context[key] = child.map((ch) => `<div data-id="id-${child.id}"></div>`);
+        context[key] = child.map((ch) => `<div data-id="id-${ch.id}"></div>`);
         return;
       }
 

@@ -24,7 +24,8 @@ export default class Chats extends Block {
             text: 'Назад к чатам',
             href: '../chats',
             className: 'link-blue',
-        })
+        });
+
     }
 
     render() {

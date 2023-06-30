@@ -21,7 +21,7 @@ ui взят из готовых решений https://www.figma.com/file/gInPV4
 
 Профиль https://sparkling-beignet-d22662.netlify.app/profile
 
-Чаты (заглушка) https://sparkling-beignet-d22662.netlify.app/chats
+Чаты  https://sparkling-beignet-d22662.netlify.app/chats
 
 Ошибка 404 https://sparkling-beignet-d22662.netlify.app/not-found
 
@@ -34,3 +34,13 @@ ui взят из готовых решений https://www.figma.com/file/gInPV4
 Изменить пароль https://sparkling-beignet-d22662.netlify.app/change-password
 
 Изменить профиль https://sparkling-beignet-d22662.netlify.app/change-user-data
+
+
+
+Реализован сбор данных из форм и валидация
+
+Сделана страница со списком чатов
+
+Добавлен класс для работы с запросами
+
+Добавлен компонентный подход

@@ -1,5 +1,4 @@
 import { renderDom } from "./utils/renderDom";
-import { chatsList } from "./pages/Chats/component/ChatList/utils";
 import NotFound from './pages/NotFounded';
 import Profile from './pages/Profile';
 import LogIn from './pages/LogIn';

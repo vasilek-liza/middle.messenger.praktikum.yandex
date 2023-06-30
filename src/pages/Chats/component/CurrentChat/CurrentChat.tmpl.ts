@@ -38,8 +38,11 @@ export const template = `
             </ul>
         </div>
         <div class='current-chat__send-message'>
-            {{{messageInput}}}
-            <img src={{{imgSend}}} alt='send' class='icon-send' />
+            <form id='form-message' class='current-chat__form'>
+                {{{messageInput}}}
+                <span class='error' id="error"></span>
+            </form>
+            {{{buttonSend}}}
         </div>
     </div>
 `

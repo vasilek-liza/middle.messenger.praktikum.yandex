@@ -2,14 +2,12 @@ import Button from "../../components/Button";
 import Input from "../../components/Input";
 import Link from "../../components/Link";
 import Block from "../../utils/Block";
+import { getErrorText } from "../../utils/getErrorText";
+import { getFormData } from "../../utils/getFotmData";
 import validateScheme from "../../utils/validateScheme";
 
 import { template } from './signUp.tmpl';
 
-interface IFormData {
-    values: Record<string, string>, 
-    errors: Record<string, string>
-}
 export default class SignUp extends Block {
     constructor(props: { title: string }) {
         super(props)
@@ -35,10 +33,12 @@ export default class SignUp extends Block {
         this.children.password = new Input({
             label: 'Пароль',
             name: 'password',
+            type: 'password',
         }),
         this.children.password_copy = new Input({
             label: 'Пароль (ещё раз)',
             name: 'password_copy',
+            type: 'password',
         }),
         this.children.phone = new Input({
             label: 'Телефон',
@@ -47,6 +47,54 @@ export default class SignUp extends Block {
         this.children.button = new Button({ 
             text: 'Зарегистрироваться', 
             type: 'submit',
+            events: { 
+                click: (e) => {
+                    e.preventDefault();
+                    const formData = getFormData('form-sign');
+                    let re = validateScheme({ 
+                        inputName:'first_name', 
+                        inputValue: formData.first_name 
+                    });
+                    if(!re) {
+                        re = validateScheme({ 
+                            inputName:'second_name', 
+                            inputValue: formData.second_name 
+                        });
+                    }
+                    if(!re) {
+                        re = validateScheme({ 
+                            inputName:'login', 
+                            inputValue: formData.login 
+                        });
+                    }
+                    if(!re) {
+                        re = validateScheme({ 
+                            inputName:'email', 
+                            inputValue: formData.email 
+                        });
+                    }
+                    if(!re) {
+                        re = validateScheme({ 
+                            inputName:'password', 
+                            inputValue: formData.password 
+                        });
+                    }
+                    if(!re) {
+                        re = validateScheme({ 
+                            inputName:'password_copy', 
+                            inputValue: formData.password_copy 
+                        });
+                    }
+                    if(!re) {
+                        re = validateScheme({ 
+                            inputName:'phone', 
+                            inputValue: formData.phone 
+                        });
+                    }
+                    getErrorText(re);
+                    console.log(formData);
+                }
+            }
         }),
         this.children.enter_link = new Link({
             text: 'Войти',

@@ -18,3 +18,8 @@ input.grey-input {
     border: none;
     margin: 0;
 }
+
+.custom-input__block {
+    display: flex;
+    flex-direction: column;
+}

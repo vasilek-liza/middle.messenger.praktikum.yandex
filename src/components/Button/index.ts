@@ -6,7 +6,9 @@ import { template } from './Button.tmpl';
 interface IButtonProps {
     text: string,
     type?: string,
-    onClick?: (e: any) => void
+    events?: {
+        click?: (e: Event) => undefined | void,
+    };
 }
 
 export default class Button extends Block {

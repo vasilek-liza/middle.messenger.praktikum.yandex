@@ -4,7 +4,7 @@ import Block from "../../../../utils/Block";
 import './ActionsBlock.scss';
 
 export default class ActionsBlock extends Block {
-    constructor(props?: unknown) {
+    constructor(props = {}) {
         super(props);
     }
 
