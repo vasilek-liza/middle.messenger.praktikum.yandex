@@ -2700,7 +2700,19 @@
   "resolved" "https://registry.npmjs.org/style-search/-/style-search-0.1.0.tgz"
   "version" "0.1.0"
 
-"stylelint@^15.8.0", "stylelint@>=13":
+"stylelint-config-recommended@^12.0.0":
+  "integrity" "sha512-x6x8QNARrGO2sG6iURkzqL+Dp+4bJorPMMRNPScdvaUK8PsynriOcMW7AFDKqkWAS5wbue/u8fUT/4ynzcmqdQ=="
+  "resolved" "https://registry.npmjs.org/stylelint-config-recommended/-/stylelint-config-recommended-12.0.0.tgz"
+  "version" "12.0.0"
+
+"stylelint-config-standard@^33.0.0":
+  "integrity" "sha512-eyxnLWoXImUn77+ODIuW9qXBDNM+ALN68L3wT1lN2oNspZ7D9NVGlNHb2QCUn4xDug6VZLsh0tF8NyoYzkgTzg=="
+  "resolved" "https://registry.npmjs.org/stylelint-config-standard/-/stylelint-config-standard-33.0.0.tgz"
+  "version" "33.0.0"
+  dependencies:
+    "stylelint-config-recommended" "^12.0.0"
+
+"stylelint@^15.5.0", "stylelint@^15.8.0", "stylelint@>=13":
   "integrity" "sha512-sXtAZi64CllWr6A+8ymDWnlIaYwuAa7XRmGnJxLQXFNnLjd3Izm4HAD+loKVaZ7cpK6SLxhAUX1lwPJKGCn0mg=="
   "resolved" "https://registry.npmjs.org/stylelint/-/stylelint-15.9.0.tgz"
   "version" "15.9.0"

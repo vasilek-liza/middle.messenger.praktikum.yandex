@@ -27,6 +27,7 @@
     "lodash-es": "^4.17.21",
     "nanoid": "^4.0.2",
     "node-sass": "npm:sass@^1.49.0",
+    "stylelint-config-standard": "^33.0.0",
     "vite-plugin-checker": "^0.6.0",
     "vite-plugin-handlebars": "^1.6.0"
   }
