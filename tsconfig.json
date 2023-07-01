@@ -1,28 +1,18 @@
+
 {
     "compilerOptions": {
-        "outDir": "dist",
-        "target": "ESNext",
-        "useDefineForClassFields": true,
-        "module": "ESNext",
-        "lib": [
-            "ESNext", 
-            "DOM",
-            "dom.iterable"
-        ],
-        "moduleResolution": "Node",
-        "strict": true,
-        "sourceMap": true,
-        "resolveJsonModule": true,
-        "isolatedModules": true,
-        "esModuleInterop": true,
-        "noEmit": true,
-        "noImplicitReturns": true,
-        "skipLibCheck": true,
-        "strictNullChecks": true
+      "outDir": "dist",
+      "target": "es2016",
+      "declaration": false,
+      "module": "commonjs",
+      "strictNullChecks": true,
+      "sourceMap": true,
+      "esModuleInterop": true,
     },
+    "strict": false,
     "noImplicitAny": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "sourceMap": true,
-    "include": ["src", "custom.d.ts"],
+    "strictNullChecks": true,
 }
