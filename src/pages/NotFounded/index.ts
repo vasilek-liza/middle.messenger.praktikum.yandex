@@ -23,4 +23,3 @@ export default class NotFound extends Block {
         return this.compile(template, { ...this.props })
     };
 }
-    
