@@ -4,9 +4,9 @@
       "useDefineForClassFields": true,
       "module": "ESNext",
       "lib": [
-          "ESNext", 
-          "DOM",
-          "dom.iterable"
+        "ESNext", 
+        "DOM",
+        "dom.iterable"
       ],
       "moduleResolution": "Node",
       "strict": true,
@@ -20,8 +20,8 @@
       "noUnusedLocals": true,
       "noUnusedParameters": true,
       "sourceMap": true,
-      "strictNullChecks": true,
-      
+      "strictNullChecks": true
+
   },
   "include": ["src", "custom.d.ts"],
 }
