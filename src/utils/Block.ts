@@ -170,6 +170,10 @@ export default class Block {
     if (!events || !this._element) {
       return;
     }
+
+    Object.entries(events).forEach(([event, listener]) => {
+      this._element!.removeEventListener(event, listener);
+    });
   }
 
   compile(template: string, context: Props) {
