@@ -154,5 +154,5 @@ export default class SignUp extends Block {
 
     render() {
         return this.compile(template, {...this.props})
-    };
+    }
 }

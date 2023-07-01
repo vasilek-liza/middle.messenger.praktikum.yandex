@@ -14,7 +14,7 @@ export default class CurrentChat extends Block {
         userProfile: string;
         incomingMessages?: MessageData[];
         outgoingMessages?: MessageData[];
-        imgSend: string
+        imgSend: unknown
     }) {
         super(props)
     }
@@ -47,5 +47,5 @@ export default class CurrentChat extends Block {
 
     render() {
         return this.compile(template, {...this.props})
-    };
+    }
 }

@@ -37,5 +37,5 @@ export default class ActionsBlock extends Block {
             `, 
             { ...this.props }
         )
-    };
+    }
 }

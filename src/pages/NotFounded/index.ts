@@ -21,5 +21,5 @@ export default class NotFound extends Block {
 
     render() {
         return this.compile(template, { ...this.props })
-    };
+    }
 }

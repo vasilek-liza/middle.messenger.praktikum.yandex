@@ -22,6 +22,6 @@ export default class Main extends Block {
 
     render() {
         return this.compile(template, {...this.props})
-    };
+    }
 }
 

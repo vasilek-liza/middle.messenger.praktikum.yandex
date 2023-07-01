@@ -77,5 +77,5 @@ export default class ChangePassword extends Block {
 
     render() {
         return this.compile(template, {...this.props})
-    };
+    }
 }

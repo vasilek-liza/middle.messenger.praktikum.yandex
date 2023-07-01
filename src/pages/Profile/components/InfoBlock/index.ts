@@ -26,5 +26,5 @@ export default class InfoBlock extends Block {
             `, 
             { ...this.props }
         )
-    };
+    }
 }

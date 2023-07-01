@@ -30,6 +30,6 @@ export default class Chats extends Block {
 
     render() {
         return this.compile(template, { ...this.props })
-    };
+    }
 }
 

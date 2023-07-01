@@ -1,7 +1,7 @@
 import emptyAvatar from '../../../../../assets/img/empty_avatar.svg';
 
 export interface IchatsList {
-    image: string, 
+    image: unknown, 
     alt: string, 
     name: string, 
     message: string, 

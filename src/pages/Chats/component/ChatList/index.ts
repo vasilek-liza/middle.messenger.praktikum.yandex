@@ -26,5 +26,5 @@ export default class ChatList extends Block {
 
     render() {
         return this.compile(template, {...this.props})
-    };
+    }
 }
