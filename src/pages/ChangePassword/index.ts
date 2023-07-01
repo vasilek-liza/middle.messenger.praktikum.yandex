@@ -13,16 +13,37 @@ export default class ChangePassword extends Block {
 
     protected initChildren() {
         this.children.oldPassword = new Input({ 
-            label: 'Старый пароль', 
+            placeholder: 'Старый пароль', 
             name: 'oldPassword',
+            events: {
+                blur: () => {
+                    const formData = getFormData('form-change-password');
+                    const reg = validateScheme({ inputName:'password', inputValue: formData.oldPassword });
+                    getErrorText(reg);
+                },
+            },
         });
         this.children.newPassword = new Input({ 
-            label: 'Новый пароль', 
+            placeholder: 'Новый пароль', 
             name: 'newPassword',
+            events: {
+                blur: () => {
+                    const formData = getFormData('form-change-password');
+                    const reg = validateScheme({ inputName:'password', inputValue: formData.newPassword });
+                    getErrorText(reg);
+                },
+            },
         });
         this.children.newPasswordCopy = new Input({ 
-            label: 'Повторите новый пароль', 
+            placeholder: 'Повторите новый пароль', 
             name: 'newPasswordCopy',
+            events: {
+                blur: () => {
+                    const formData = getFormData('form-change-password');
+                    const reg = validateScheme({ inputName:'password', inputValue: formData.newPasswordCopy });
+                    getErrorText(reg);
+                },
+            },
         });
         this.children.save = new Button({ 
             text: 'Сохранить', 
@@ -48,7 +69,6 @@ export default class ChangePassword extends Block {
                         });
                     }
                     getErrorText(re);
-                    console.log(re);
                     console.log(formData);
                 }
             }

@@ -15,22 +15,27 @@ export default class LogIn extends Block {
 
     protected initChildren() {
         this.children.login = new Input({
-            label: 'Логин',
+            placeholder: 'Логин',
             name: 'login',
             events: {
-                blur: (e) => {
-                    console.log(e)
+                blur: () => {
                     const formData = getFormData('form-auth');
-                    console.log(formData)
-                    let re = validateScheme({ inputName:'login', inputValue :formData.login });
-                    console.log(re)
+                    const reg = validateScheme({ inputName:'login', inputValue :formData.login });
+                    getErrorText(reg);
                 },
             },
         });
         this.children.password = new Input({
-            label: 'Пароль',
+            placeholder: 'Пароль',
             name: 'password',
             type: 'password',
+            events: {
+                blur: () => {
+                    const formData = getFormData('form-auth');
+                    const reg = validateScheme({ inputName:'password', inputValue :formData.login });
+                    getErrorText(reg);
+                },
+            },
         }),
         this.children.button = new Button({ 
             text: 'Авторизоваться', 

@@ -33,7 +33,7 @@ export default class CurrentChat extends Block {
                     click: (e) => {
                         e.preventDefault();
                         const formData = getFormData('form-message');
-                        let re = validateScheme({ 
+                        const re = validateScheme({ 
                             inputName:'message', 
                             inputValue: formData.message 
                         });

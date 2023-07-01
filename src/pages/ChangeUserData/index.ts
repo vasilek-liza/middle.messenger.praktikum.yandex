@@ -13,12 +13,65 @@ export default class ChangeUserData extends Block {
     }
 
     protected initChildren() {
-        this.children.first_name = new Input({ label: 'Имя', name: 'first_name' });
-        this.children.second_name = new Input({ label: 'Фамилия', name: 'second_name'});
-        this.children.login = new Input({ label: 'Логин', name: 'login'});
-        this.children.email = new Input({ label: 'Почта', name: 'email'});
-        this.children.display_name = new Input({ label: 'Имя в чате', name: 'display_name'});
-        this.children.phone = new Input({ label: 'Телефон', name: 'phone'});
+        this.children.first_name = new Input({ 
+            placeholder: 'Имя', 
+            name: 'first_name',
+            events: {
+                blur: () => {
+                    const formData = getFormData('form-change-data');
+                    const reg = validateScheme({ inputName:'first_name', inputValue: formData.first_name });
+                    getErrorText(reg);
+                },
+            },
+        });
+        this.children.second_name = new Input({ 
+            placeholder: 'Фамилия', 
+            name: 'second_name',
+            events: {
+                blur: () => {
+                    const formData = getFormData('form-change-data');
+                    const reg = validateScheme({ inputName:'email', inputValue: formData.email });
+                    getErrorText(reg);
+                },
+            },
+        });
+        this.children.login = new Input({ 
+            placeholder: 'Логин', 
+            name: 'login',
+            events: {
+                blur: () => {
+                    const formData = getFormData('form-change-data');
+                    const reg = validateScheme({ inputName:'email', inputValue: formData.email });
+                    getErrorText(reg);
+                },
+            },
+        });
+        this.children.email = new Input({ 
+            placeholder: 'Почта', 
+            name: 'email',
+            events: {
+                blur: () => {
+                    const formData = getFormData('form-change-data');
+                    const reg = validateScheme({ inputName:'email', inputValue: formData.email });
+                    getErrorText(reg);
+                },
+            },
+        });
+        this.children.display_name = new Input({ 
+            placeholder: 'Имя в чате', 
+            name: 'display_name',
+        });
+        this.children.phone = new Input({ 
+            placeholder: 'Телефон', 
+            name: 'phone',
+            events: {
+                blur: () => {
+                    const formData = getFormData('form-change-data');
+                    const reg = validateScheme({ inputName:'phone', inputValue: formData.phone });
+                    getErrorText(reg);
+                },
+            },
+        });
         this.children.save = new Button({ 
             text: 'Сохранить', 
             type: 'submit',
@@ -46,12 +99,6 @@ export default class ChangeUserData extends Block {
                         re = validateScheme({ 
                             inputName:'email', 
                             inputValue: formData.email 
-                        });
-                    }
-                    if(!re) {
-                        re = validateScheme({ 
-                            inputName:'display_name', 
-                            inputValue: formData.display_name 
                         });
                     }
                     if(!re) {

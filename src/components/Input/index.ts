@@ -1,12 +1,10 @@
 import Block from "../../utils/Block";
-// import SimpleInput from "./SimpleInput/index";
 import './Input.scss';
 
 import { template } from './Input.tmpl';
 interface IInputProps {
     name: string,
     placeholder?: string,
-    label?: string,
     className?: string,
     type?: string,
     events?: {
@@ -18,13 +16,13 @@ interface IInputProps {
 export default class Input extends Block {
     constructor(props: IInputProps) {
         super(props);
-    }
-    protected initChildren() {
-        // this.children.simpleInput = new SimpleInput({...this.props});
+        
     }
     
     render() {
-        console.log({...this.props})
-        return this.compile(template, {...this.props});
+        return this.compile(
+            template, 
+            {...this.props}
+        );
     }
 }

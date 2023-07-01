@@ -15,34 +15,83 @@ export default class SignUp extends Block {
     
     protected initChildren() {
         this.children.first_name = new Input({
-            label: 'Имя',
+            placeholder: 'Имя',
             name: 'first_name',
+            events: {
+                blur: () => {
+                    const formData = getFormData('form-sign');
+                    const reg = validateScheme({ inputName:'first_name', inputValue: formData.first_name });
+                    getErrorText(reg);
+                },
+            },
         }),
         this.children.second_name = new Input({
-            label: 'Фамилия',
+            placeholder: 'Фамилия',
             name: 'second_name',
+            events: {
+                blur: () => {
+                    const formData = getFormData('form-sign');
+                    const reg = validateScheme({ inputName:'second_name', inputValue: formData.second_name });
+                    getErrorText(reg);
+                },
+            },
         }),
         this.children.login = new Input({
-            label: 'Логин',
+            placeholder: 'Логин',
             name: 'login',
+            events: {
+                blur: () => {
+                    const formData = getFormData('form-sign');
+                    const reg = validateScheme({ inputName:'login', inputValue: formData.login });
+                    getErrorText(reg);
+                },
+            },
         }),
         this.children.email = new Input({
-            label: 'Почта',
+            placeholder: 'Почта',
             name: 'email',
+            events: {
+                blur: () => {
+                    const formData = getFormData('form-sign');
+                    const reg = validateScheme({ inputName:'email', inputValue: formData.email });
+                    getErrorText(reg);
+                },
+            },
         }),
         this.children.password = new Input({
-            label: 'Пароль',
+            placeholder: 'Пароль',
             name: 'password',
             type: 'password',
+            events: {
+                blur: () => {
+                    const formData = getFormData('form-sign');
+                    const reg = validateScheme({ inputName:'password', inputValue: formData.password });
+                    getErrorText(reg);
+                },
+            },
         }),
         this.children.password_copy = new Input({
-            label: 'Пароль (ещё раз)',
+            placeholder: 'Пароль (ещё раз)',
             name: 'password_copy',
             type: 'password',
+            events: {
+                blur: () => {
+                    const formData = getFormData('form-sign');
+                    const reg = validateScheme({ inputName:'password', inputValue: formData.password_copy });
+                    getErrorText(reg);
+                },
+            },
         }),
         this.children.phone = new Input({
-            label: 'Телефон',
+            placeholder: 'Телефон',
             name: 'phone',
+            events: {
+                blur: () => {
+                    const formData = getFormData('form-sign');
+                    const reg = validateScheme({ inputName:'phone', inputValue: formData.phone });
+                    getErrorText(reg);
+                },
+            },
         }),
         this.children.button = new Button({ 
             text: 'Зарегистрироваться', 
