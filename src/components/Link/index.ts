@@ -17,4 +17,3 @@ export default class Link extends Block {
         return this.compile(template, {...this.props });
     }
 }
-    
