@@ -6,6 +6,10 @@
         justify-content: space-between;
         width: 900px;
     }
+
+    &__content {
+        height: 100%;
+    }
 }
 
 li {
@@ -28,5 +32,6 @@ h1 {
     flex-direction: column;
     align-items: center;
     padding-top: 36px;
+    height: 100%;
 }
 
