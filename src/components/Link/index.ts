@@ -7,6 +7,9 @@ interface ILinkProps {
     text: string,
     href: string,
     className?: string,
+    events?: {
+        click?: (e: Event) => undefined | void,
+    };
 }
 export default class Link extends Block {
     constructor(props: ILinkProps) {

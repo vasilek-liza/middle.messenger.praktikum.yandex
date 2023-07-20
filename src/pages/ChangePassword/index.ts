@@ -1,5 +1,7 @@
+import { Password } from "../../api/UsersAPI";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
+import UserControllers from "../../controllers/UserControllers";
 import Block from "../../utils/Block";
 import { getErrorText } from "../../utils/getErrorText";
 import { getFormData } from "../../utils/getFotmData";
@@ -7,7 +9,7 @@ import validateScheme from "../../utils/validateScheme";
 
 import { template } from './ChangePassword.tmpl';
 export default class ChangePassword extends Block {
-    constructor(props: { title: string }) {
+    constructor(props: any) {
         super(props)
     }
 
@@ -62,14 +64,10 @@ export default class ChangePassword extends Block {
                             inputValue: formData.newPassword 
                         });
                     }
-                    if(!re) {
-                        re = validateScheme({ 
-                            inputName:'password', 
-                            inputValue: formData.newPasswordCopy 
-                        });
-                    }
                     getErrorText(re);
                     console.log(formData);
+
+                    UserControllers.changeUserPassword(formData as Password);
                 }
             }
         });

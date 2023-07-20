@@ -1,5 +1,7 @@
 import Link from "../../../../components/Link";
+import AuthControllers from "../../../../controllers/AuthControllers";
 import Block from "../../../../utils/Block";
+import { Router } from "../../../../utils/Router";
 
 import './ActionsBlock.scss';
 
@@ -13,16 +15,36 @@ export default class ActionsBlock extends Block {
             text: 'Выйти',
             href: '../',
             className: 'link-red',
+            events: {
+                click: (e) => {
+                    e.preventDefault();
+                    AuthControllers.logout();
+                    Router.go('../');
+                }
+            }
+
         });
         this.children.changePassword = new Link({
             text: 'Изменить пароль',
             href: '../change-password',
             className: 'link-blue',
+            events: { 
+                click: (e) => {
+                    e.preventDefault();
+                    Router.go('../change-password');
+                }
+            }
         });
         this.children.changeUserData = new Link({
             text: 'Изменить данные',
-            href: '../change-user-data',
+            href: '../settings',
             className: 'link-blue',
+            events: { 
+                click: (e) => {
+                    e.preventDefault();
+                    Router.go('../settings');
+                }
+            }
         })
     }
 

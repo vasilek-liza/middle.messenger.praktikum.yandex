@@ -3,6 +3,7 @@ import EventBus from "./EventBus";
 import { nanoid } from "nanoid";
 
 type Props = Record<string, any>
+
 export default class Block {
   static EVENTS = {
     INIT: "init",
@@ -60,6 +61,17 @@ export default class Block {
     return { props, children };
   }
 
+  private _checkInDom() {
+    const elementInDOM = document.body.contains(this._element);
+
+    if (elementInDOM) {
+      setTimeout(() => this._checkInDom(), 1000);
+      return;
+    }
+
+    this.eventBus().emit(Block.EVENTS.FLOW_CDU, this.props);
+  }
+
   private _registerEvents(eventBus: EventBus) {
     eventBus.on(Block.EVENTS.INIT, this.init.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
@@ -72,6 +84,7 @@ export default class Block {
   }
 
   private _componentDidMount() {
+    this._checkInDom();
     this.componentDidMount();
   }
 
@@ -79,6 +92,9 @@ export default class Block {
 
   dispatchComponentDidMount() {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
+    Object.values(this.children).forEach((child) =>
+        child.dispatchComponentDidMount(),
+    );
   }
 
   private _componentDidUpdate(oldProps: unknown, newProps: unknown) {
@@ -91,6 +107,16 @@ export default class Block {
     // вывела в консоль чтобы линтер не ругался, что я их пока не использую
     console.log(oldProps, newProps)
     return true;
+  }
+
+  _componentWillUnmount() {
+    this.eventBus().destroy();
+    this.componentWillUnmount();
+  }
+
+  public componentWillUnmount() {
+    this.eventBus().destroy();
+    this.componentWillUnmount();
   }
 
   setProps = (nextProps: Props) => {
@@ -217,6 +243,10 @@ export default class Block {
 
   hide() {
     this.getContent()!.style.display = "none";
+  }
+
+  public destroy() {
+    this._element!.remove();
   }
 
   protected initChildren() {}

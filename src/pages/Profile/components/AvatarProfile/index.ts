@@ -1,6 +1,7 @@
 import emptyAvatar from '../../../../assets/img/empty_avatar.svg';
 import Avatar from '../../../../components/Avatar';
 import Button from '../../../../components/Button';
+import UserControllers from '../../../../controllers/UserControllers';
 import Block from '../../../../utils/Block';
 import './AvatarProfile.scss';
 
@@ -10,7 +11,18 @@ export default class AvatarProfile extends Block {
     }
 
     protected initChildren(): void {
-        this.children.save = new Button({ text: 'Поменять', type: 'submit' });
+        this.children.save = new Button(
+            {   
+                text: 'Поменять', 
+                type: 'submit',
+                events: { 
+                    click: (e) => {
+                        e.preventDefault();
+                        UserControllers.changeUserAvatar(emptyAvatar);
+                    }
+                }
+            }
+        );
         this.children.avatar = new Avatar({ image: `${emptyAvatar}`, alt: 'avatar' })
     }
 

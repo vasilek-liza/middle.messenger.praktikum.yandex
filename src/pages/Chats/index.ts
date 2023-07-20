@@ -8,7 +8,7 @@ import './Chats.scss';
 
 import { template } from './chats.tmpl';
 export default class Chats extends Block {
-    constructor(props: { title: string }) {
+    constructor(props: any) {
         super(props);
     }
 

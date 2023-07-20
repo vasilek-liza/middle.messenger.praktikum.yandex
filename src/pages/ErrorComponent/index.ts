@@ -1,10 +1,11 @@
 import Link from "../../components/Link";
 import Block from "../../utils/Block";
+import { Router } from "../../utils/Router";
 
 import { template } from './error.tmpl';
 
 export default class ErrorComponent extends Block {
-    constructor(props: { title: string }) {
+    constructor(props: any) {
         super(props);
     }
 
@@ -12,7 +13,13 @@ export default class ErrorComponent extends Block {
         this.children.link = new Link({
             text: 'Назад к чатам',
             href: '../chats',
-            className: 'link-blue', 
+            className: 'link-blue',
+            events: { 
+                click: (e) => {
+                    e.preventDefault();
+                    Router.go('../chats');
+                }
+            }
         })
     }
 

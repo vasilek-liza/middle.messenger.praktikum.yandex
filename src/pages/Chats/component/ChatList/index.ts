@@ -5,6 +5,7 @@ import Block from "../../../../utils/Block";
 import './ChatList.scss';
 
 import { template } from './ChatList.tmpl';
+import { Router } from "../../../../utils/Router";
 
 export default class ChatList extends Block {
     constructor(props: { chatsList: IchatsList[]}) {
@@ -16,6 +17,12 @@ export default class ChatList extends Block {
             text: 'Мой профиль',
             href: '../profile',
             className: 'link-follow',
+            events: { 
+                click: (e) => {
+                    e.preventDefault();
+                    Router.go('../profile');
+                }
+            }
         });
         this.children.search = new Input({
             placeholder: 'Поиск',

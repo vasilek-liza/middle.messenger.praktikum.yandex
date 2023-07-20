@@ -1,4 +1,3 @@
-import { renderDom } from "./utils/renderDom";
 import NotFound from './pages/NotFounded';
 import Profile from './pages/Profile';
 import LogIn from './pages/LogIn';
@@ -8,43 +7,40 @@ import ErrorComponent from './pages/ErrorComponent';
 import Chats from './pages/Chats';
 import ChangeUserData from './pages/ChangeUserData';
 import ChangePassword from './pages/ChangePassword';
+import { Router } from "./utils/Router";
+import AuthControllers from "./controllers/AuthControllers";
+import { store } from "./store";
 import './index.scss';
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async() => {
+    Router
+        .use('/login', LogIn)
+        .use('/sign-up', SignUp)
+        .use('/chats', Chats)
+        .use('/profile', Profile)
+        .use('/settings', ChangeUserData)
+        .use('/change-password', ChangePassword)
+        .use('/error', ErrorComponent)
+        .use('/not-found', NotFound)
+        .use('/', Main)
+        .start();
 
-    const LogInPage = new LogIn({ title: 'Войти' });
-    const SignUpPage = new SignUp({ title: 'Регистрация' });
-    const ProfilePage = new Profile({ title: 'Профиль'});
-    const ChatsPage = new Chats({ title: 'Чаты' });
-    const ErrorComponentPage = new ErrorComponent({ title: '500'});
-    const ChangeUserDataPage = new ChangeUserData({ title: 'Изменить данные' });
-    const ChangePasswordPage = new ChangePassword({ title: 'Изменить пароль'});
-    const NotFoundPage = new NotFound({ title: '404'});
-
-    const getCurrentPages = () => {
-
-        switch(window.location.pathname) {
-            case '/login': 
-                return LogInPage;
-            case '/signup': 
-                return SignUpPage;
-            case '/profile': 
-                return ProfilePage;
-            case '/chats': 
-                return ChatsPage;
-            case '/error': 
-                return ErrorComponentPage;
-            case '/change-user-data': 
-                return ChangeUserDataPage;
-            case '/change-password': 
-                return ChangePasswordPage;
-            case '/': 
-            return new Main;
-            default: 
-                return NotFoundPage;
+    try {
+        await AuthControllers.fetchUser();
+        if (store.getState()?.user?.id) {
+            Router.start();
+            // Router.go('/chats');
+        } else {
+            Router.start();
+            Router.go('/login');
+        }
+    } catch (e) {
+        Router.start();
+        if (store.getState().user) {
+            Router.go('/chats');
+        } else {
+            Router.go('/login');
         }
     }
-    
-    renderDom("#app", getCurrentPages());
 
 })
