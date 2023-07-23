@@ -26,4 +26,3 @@ function mapStateProps(state: State) {
 }
 
 export const Chats = withStore(mapStateProps)(BaseChats);
-

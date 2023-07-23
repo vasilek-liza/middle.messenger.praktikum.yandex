@@ -56,5 +56,4 @@ export class AuthAPI extends API {
         return this.http.get('/user')
 
     }
-
 }
