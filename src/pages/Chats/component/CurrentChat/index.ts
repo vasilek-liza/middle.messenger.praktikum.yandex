@@ -5,28 +5,24 @@ import { template } from './CurrentChat.tmpl';
 import './CurrentChat.scss';
 import Block from "../../../../utils/Block";
 import Button from "../../../../components/Button";
-import { getFormData } from "../../../../utils/getFotmData";
-import { getErrorText } from "../../../../utils/getErrorText";
-import validateScheme from "../../../../utils/validateScheme";
 import ChatsControllers from "../../../../controllers/ChatsControllers";
-import { ISignUpData, IUser } from "../../../../api/AuthAPI";
-import { store } from "../../../../store";
+import { IUser } from "../../../../api/AuthAPI";
+import { store, withStore } from "../../../../store";
+import { State } from "../../../../types";
+import { sendMessage } from "../../../../utils/Websockets";
 
-export default class CurrentChat extends Block {
-    constructor(props: { 
-        userProfile: string;
-        incomingMessages?: MessageData[];
-        outgoingMessages?: MessageData[];
-        imgSend: unknown
-    }) {
+class BaseCurrentChat extends Block {
+    constructor(props = {}) {
         super(props)
     }
 
     async addUserToChat() {
+        const state = store.getState();
+        const chatId = state.currentChat?.id;
         const userLogin = prompt('Введите логин пользователя');
-        if (userLogin) {
+        if (userLogin && chatId) {
             const user = await ChatsControllers.getUserIdByLogin({login: userLogin}) as { id: number}[];
-            await ChatsControllers.addUser({users:[user[0].id],chatId: 272})
+            await ChatsControllers.addUser({users:[user[0].id], chatId})
                 .then(() => {
                     alert('Пользователь добавлен')
                 })
@@ -39,17 +35,19 @@ export default class CurrentChat extends Block {
     }
 
     async removeChat() {
-        const chatId = 290;
+        const state = store.getState();
+        const chatId = state.currentChat?.id;
         const isRemove = confirm("хотите удалить этот чат?");
-        if (isRemove) {
+        if (isRemove && chatId) {
             await ChatsControllers.removeChart({ chatId })
         }
     }
 
     async removeUserToChat() {
-        const chatId = 272;
+        const state = store.getState();
+        const chatId = state.currentChat?.id;
         const userLogin = prompt('Введите логин пользователя');
-        if (userLogin) {
+        if (userLogin && chatId) {
             const user = await ChatsControllers.getUserIdByLogin({login: userLogin}) as { id: number}[];
             const chatUsers  = await ChatsControllers.getChatUsers(chatId) as IUser[];
             const existUser = chatUsers.find(elem=>elem.id === user[0].id);
@@ -81,14 +79,17 @@ export default class CurrentChat extends Block {
                 type: 'submit',
                 events: { 
                     click: (e) => {
+                        console.log(e)
                         e.preventDefault();
-                        const formData = getFormData('form-message');
-                        const re = validateScheme({ 
-                            inputName:'message', 
-                            inputValue: formData.message 
+                        const input = this.children.messageInput as any;
+                        if (input?.element?.value.length > 0) {
+                        const chatId = store.getState().currentChat!.id!;
+                        sendMessage(chatId, input.element.value);
+
+                        ChatsControllers.getChats().finally(() => {
+                            input.element.value = "";
                         });
-                        getErrorText(re);
-                        console.log(formData);
+                        }
                     }
                 }
             }
@@ -116,10 +117,19 @@ export default class CurrentChat extends Block {
                     this.removeChat()
                 }
             }
-        })
+        });
     }
 
     render() {
         return this.compile(template, {...this.props})
     }
 }
+function mapStateProps(state: State) {
+    const id = store.getState().currentChat?.id;
+    if (id) {
+        return { messageList: [...state.messageList[id]], id}
+    }
+    return {...state.messageList}
+}
+
+export const CurrentChat = withStore(mapStateProps)(BaseCurrentChat);

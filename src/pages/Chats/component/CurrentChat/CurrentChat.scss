@@ -11,6 +11,11 @@
         margin: -36px 0 24px;
     }
 
+    &__list {
+        height: calc(100vh - 300px);
+        overflow: scroll;
+    }
+
     &__text {
         display: flex;
         justify-content: center;
@@ -18,9 +23,8 @@
     }
 
     &__user-name {
-        font-size: 18px;
         padding: 24px;
-        margin: 0;
+        display: flex;
     }
 
     &__message {
@@ -34,6 +38,18 @@
     &__time {
         font-size: 12px;
         text-align: end;
+    }
+
+    &__avatar {
+        width: 60px;
+        height: 60px;
+        font-size: 12px;
+        margin-right: 16px;
+        background: #EFEFEF;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     &__outgoing-messages {

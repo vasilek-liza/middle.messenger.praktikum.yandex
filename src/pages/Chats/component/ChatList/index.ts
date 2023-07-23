@@ -1,7 +1,5 @@
 import Link from "../../../../components/Link";
-import Input from "../../../../components/Input";
-import emptyAvatar from '../../../../assets/img/empty_avatar.svg';
-import { chatsList, IchatsList } from "./utils";
+import { IchatsList } from "./utils";
 import Block from "../../../../utils/Block";
 import './ChatList.scss';
 
@@ -11,11 +9,17 @@ import Button from "../../../../components/Button";
 import { State } from "../../../../types";
 import { store, withStore } from "../../../../store";
 import ChatsControllers from "../../../../controllers/ChatsControllers";
-import Avatar from "../../../../components/Avatar";
 
 class BaseChatList extends Block {
     constructor(props: { chatsList: IchatsList[]}) {
-        super(props)
+        super({
+            ...props,
+            events: {
+                click: (e: any) => {
+                    if (e.target?.id) store.set('currentChat', { id: e.target?.id});
+                }
+            },
+        })
     }
 
     init(): void {
@@ -56,12 +60,6 @@ class BaseChatList extends Block {
                 }
             }
         });
-        this.children.avatarImg = new Avatar({ image: `${emptyAvatar}`, alt: 'avatar' });
-        this.children.search = new Input({
-            placeholder: 'Поиск',
-            name: 'search',
-            className: 'grey-input'
-        })
     }
 
     render() {

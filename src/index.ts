@@ -31,7 +31,6 @@ document.addEventListener('DOMContentLoaded', async() => {
         await AuthControllers.fetchUser();
         if (store.getState()?.user?.id) {
             Router.start();
-            // Router.go('/chats');
         } else {
             Router.start();
             Router.go('/login');

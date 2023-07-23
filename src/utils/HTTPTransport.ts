@@ -42,7 +42,6 @@ export class HTTPTransport {
     };
     
     post: HTTPMethod = (url, options): any => {
-        console.log(options)
         return this.request(
             this.endpoint + url,
             {

@@ -1,8 +1,8 @@
 export const template = `
     <div class='current-chat'>
-        {{#if currentChat}}            
+        {{#if id}}            
             <p class='current-chat__user-name'>
-                {{{userPlofile}}}
+                ID выбранного чата: {{{id}}}
             </p>
             <div class='current-chat__action'>
                 {{{addUser}}}
@@ -11,33 +11,16 @@ export const template = `
             </div>
             <div class='current-chat__incoming-messages'>
                 <ul class='current-chat__list'>
-                    {{#each incomingMessages}}
+                    {{#each messageList}}
                         <li class='current-chat__item'>
+                            <div class='current-chat__avatar'>ID: {{{user_id}}}</div>
                             <div class='current-chat__message'>
                                 <div class='current-chat__text-and-time'>
                                     <div class='current-chat__text'>
-                                        {{this.text}}
+                                        {{{this.content}}}
                                     </div>
                                     <div class='current-chat__time'>
-                                        {{this.time}}
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    {{/each}}
-                </ul>
-            </div>
-            <div class='current-chat__outgoing-messages'>
-                <ul class='current-chat__list'>
-                    {{#each outgoingMessages}}
-                        <li class='current-chat__item'>
-                            <div class='current-chat__message'>
-                                <div class='current-chat__text-and-time'>
-                                    <div class='current-chat__text'>
-                                        {{this.text}}
-                                    </div>
-                                    <div class='current-chat__time'>
-                                        {{this.time}}
+                                        {{{this.time}}}
                                     </div>
                                 </div>
                             </div>
