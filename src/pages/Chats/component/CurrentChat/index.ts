@@ -1,8 +1,4 @@
-import { MessageData } from "../ChatList/utils";
 import Input from "../../../../components/Input";
-
-import { template } from './CurrentChat.tmpl';
-import './CurrentChat.scss';
 import Block from "../../../../utils/Block";
 import Button from "../../../../components/Button";
 import ChatsControllers from "../../../../controllers/ChatsControllers";
@@ -10,6 +6,9 @@ import { IUser } from "../../../../api/AuthAPI";
 import { store, withStore } from "../../../../store";
 import { State } from "../../../../types";
 import { sendMessage } from "../../../../utils/Websockets";
+import './CurrentChat.scss';
+
+import { template } from './CurrentChat.tmpl';
 
 class BaseCurrentChat extends Block {
     constructor(props = {}) {

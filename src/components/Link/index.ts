@@ -1,7 +1,7 @@
 import Block from "../../utils/Block";
+import './Link.scss';
 
 import { template } from './Link.tmpl';
-import './Link.scss';
 
 interface ILinkProps {
     text: string,

@@ -12,7 +12,6 @@ class UserController {
     async changeUserProfile(data: UserProfile) {
         try {
             const user = await this.api.putUserProfile(data);
-            console.log(user)
             store.set('user', user);
             Router.go('/profile');
         } catch (error) {

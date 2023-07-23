@@ -1,17 +1,16 @@
 import Link from "../../../../components/Link";
-import { IchatsList } from "./utils";
-import Block from "../../../../utils/Block";
-import './ChatList.scss';
-
-import { template } from './ChatList.tmpl';
 import { Router } from "../../../../utils/Router";
 import Button from "../../../../components/Button";
 import { State } from "../../../../types";
 import { store, withStore } from "../../../../store";
 import ChatsControllers from "../../../../controllers/ChatsControllers";
+import Block from "../../../../utils/Block";
+import './ChatList.scss';
+
+import { template } from './ChatList.tmpl';
 
 class BaseChatList extends Block {
-    constructor(props: { chatsList: IchatsList[]}) {
+    constructor(props = {}) {
         super({
             ...props,
             events: {

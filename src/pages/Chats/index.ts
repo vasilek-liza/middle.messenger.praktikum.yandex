@@ -1,12 +1,11 @@
-import Link from "../../components/Link";
+import { State } from "../../types";
+import { withStore } from "../../store";
 import { CurrentChat } from "./component/CurrentChat";
 import { ChatList } from "./component/ChatList";
 import Block from "../../utils/Block";
 import './Chats.scss';
 
 import { template } from './chats.tmpl';
-import { State } from "../../types";
-import { withStore } from "../../store";
 class BaseChats extends Block {
     constructor(props: any) {
         super(props);

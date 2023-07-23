@@ -111,7 +111,6 @@ export default class ChangeUserData extends Block {
                     }
                     getErrorText(re);
                     console.log(formData);
-
                     UserControllers.changeUserProfile(formData as UserProfile);
                 }
             }

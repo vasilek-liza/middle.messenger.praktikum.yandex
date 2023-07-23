@@ -2,10 +2,7 @@ import { IUser } from "../api/AuthAPI";
 import { ChatsAPI } from "../api/ChatsAPI";
 import { UsersAPI } from "../api/UsersAPI";
 import { store } from "../store";
-import { Router } from "../utils/Router";
 import { newConnect } from "../utils/Websockets";
-// import {StoreApp} from "../core/Store";
-// import {newConnect} from "./Messages";
 
 export interface ChatList {
     id: number;
@@ -43,12 +40,10 @@ class ChatsController {
     async getChats() {
         try {
             const chatList = await this.api.getChats() as ChatList[];
-            
             chatList.map(async (chat) => {
                 const {token} = await this.api.postToken(chat.id) as any;
                 await newConnect(chat.id, token);
             });
-        
             store.set('chats', { chatList });
         } catch (e: any) {
             alert(e);
