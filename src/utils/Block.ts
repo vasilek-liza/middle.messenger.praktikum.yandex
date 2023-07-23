@@ -105,7 +105,7 @@ export default class Block {
 
   componentDidUpdate(oldProps: unknown, newProps: unknown) {
     // вывела в консоль чтобы линтер не ругался, что я их пока не использую
-    // console.log(oldProps, newProps)
+    console.log(oldProps, newProps)
     return true;
   }
 

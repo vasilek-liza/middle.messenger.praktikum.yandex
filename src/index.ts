@@ -11,8 +11,6 @@ import { Router } from "./utils/Router";
 import AuthControllers from "./controllers/AuthControllers";
 import { store } from "./store";
 import './index.scss';
-import UserControllers from './controllers/UserControllers';
-import ChatsControllers from './controllers/ChatsControllers';
 
 document.addEventListener('DOMContentLoaded', async() => {
     Router

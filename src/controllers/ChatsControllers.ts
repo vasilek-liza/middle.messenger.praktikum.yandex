@@ -1,6 +1,6 @@
 import { IUser } from "../api/AuthAPI";
 import { ChatsAPI } from "../api/ChatsAPI";
-import { UsersAPI } from "../api/UsersAPI";
+import UsersAPI from "../api/UsersAPI";
 import { store } from "../store";
 import { newConnect } from "../utils/Websockets";
 

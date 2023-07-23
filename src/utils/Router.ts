@@ -1,5 +1,5 @@
 import Block from "./Block";
-import renderDOM from "./renderDOM";
+import { renderDOM } from "./renderDom";
 
 export interface BlockConstructable<P = any> {
     new(props: P): Block;
@@ -29,7 +29,6 @@ export class Route {
     render() {
       if (!this.block) {
         this.block = new this.blockClass({});
-  
         renderDOM(this.block as any, this.query);
         return;
       }
