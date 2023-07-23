@@ -2,7 +2,7 @@ import {
     UsersAPI,
     UserProfile,
     Password
-} from "../api/UsersAPI";
+} from "../api/Users";
 import { store } from "../store";
 import { Router } from "../utils/Router";
 

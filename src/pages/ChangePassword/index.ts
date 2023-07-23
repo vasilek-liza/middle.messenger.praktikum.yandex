@@ -1,4 +1,4 @@
-import { Password } from "../../api/UsersAPI";
+import { Password } from "../../api/Users";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
 import UserControllers from "../../controllers/UserControllers";
