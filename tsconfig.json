@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
+      "baseUrl": ".",
       "target": "ESNext",
-      "forceConsistentCasingInFileNames": false,
       "useDefineForClassFields": true,
       "module": "ESNext",
       "lib": [
@@ -9,7 +9,7 @@
         "DOM",
         "dom.iterable"
       ],
-      "moduleResolution": "Node",
+      "moduleResolution": "node",
       "strict": true,
       "resolveJsonModule": true,
       "isolatedModules": true,
@@ -23,5 +23,6 @@
       "sourceMap": true,
       "strictNullChecks": true
   },
-  "include": ["src", "custom.d.ts"]
+  "include": ["src", "custom.d.ts"],
+  "exclude": ["node_modules", ".vscode"],
 }
