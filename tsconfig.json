@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
       "target": "ESNext",
-      "forceConsistentCasingInFileNames": true,
+      "forceConsistentCasingInFileNames": false,
       "useDefineForClassFields": true,
       "module": "ESNext",
       "lib": [
