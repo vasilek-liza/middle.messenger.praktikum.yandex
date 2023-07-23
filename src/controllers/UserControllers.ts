@@ -1,4 +1,5 @@
-import UsersAPI, { 
+import { 
+    UsersAPI,
     UserProfile,
     Password
 } from "../api/UsersAPI";

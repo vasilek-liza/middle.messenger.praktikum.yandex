@@ -14,7 +14,7 @@ export interface Password {
     newPassword: string;
 }
 
-export default class UsersAPI extends API {
+export class UsersAPI extends API {
   constructor() {
     super("/user");
   }
