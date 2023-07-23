@@ -104,4 +104,4 @@ export class CustomRouter {
     }
   }
   
-  export const Router = new CustomRouter('#app');
+export const Router = new CustomRouter('#app');

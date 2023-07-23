@@ -65,7 +65,7 @@ const newConnect = async (chatId: number, token: string) => {
       }
 
       const messageList = store.getState().messageList?.[+chatId];
-      const currentList = {};
+      const currentList: Record<number, any> = {};
       if (messageList) {
         console.log(messageList)
         currentList[+chatId] = [...messageList || {}, ...messagesToAdd];
