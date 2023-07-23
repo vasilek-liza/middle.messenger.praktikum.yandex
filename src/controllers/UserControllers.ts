@@ -12,6 +12,7 @@ class UserController {
     async changeUserProfile(data: UserProfile) {
         try {
             const user = await this.api.putUserProfile(data);
+            console.log(user)
             store.set('user', user);
             Router.go('/profile');
         } catch (error) {
@@ -21,7 +22,7 @@ class UserController {
 
     async changeUserAvatar(data: FormData) {
         try {
-            const user = this.api.putUserAvatar(data);
+            const user = await this.api.putUserAvatar(data);
             store.set('user', user);
             Router.go('/profile');
         } catch (error) {
@@ -37,6 +38,7 @@ class UserController {
             console.log(error)
         }
     }
+    
 }
 
 export default new UserController();

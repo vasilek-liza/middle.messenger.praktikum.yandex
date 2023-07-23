@@ -12,12 +12,12 @@ class Store extends EventBus {
     private state: State = {};
 
     getState() {
+        console.log(this.state)
         return this.state
     }
 
     set(path: string, value: unknown) {
         set(this.state, path, value);
-        console.log(value)
         this.emit(StorageEvent.UpdateState, this.state)
     }
 }

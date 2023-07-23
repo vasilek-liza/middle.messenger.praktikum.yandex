@@ -19,7 +19,7 @@ export default class ActionsBlock extends Block {
                 click: (e) => {
                     e.preventDefault();
                     AuthControllers.logout();
-                    Router.go('../');
+                    Router.go('/login');
                 }
             }
 

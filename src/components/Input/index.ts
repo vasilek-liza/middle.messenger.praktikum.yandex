@@ -10,6 +10,7 @@ interface IInputProps {
     events?: {
         blur?: (e: Event) => undefined | void,
         focus?: (e: Event) => undefined | void,
+        change?: (e: Event) => undefined | void,
     };
 }
 

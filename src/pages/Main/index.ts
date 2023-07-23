@@ -43,11 +43,11 @@ export default class Main extends Block {
         });
         this.children.linkNotFound = new Link({ 
             text: 'Ошибка 404', 
-            href: '/not-found',
+            href: '/*',
             events: { 
                 click: (e) => {
                     e.preventDefault();
-                    Router.go('/not-found');
+                    Router.go('/*');
                 }
             }
         });
@@ -63,11 +63,11 @@ export default class Main extends Block {
         });
         this.children.linkChats = new Link({ 
             text: 'Чаты', 
-            href: '/chats',
+            href: '/messenger',
             events: { 
                 click: (e) => {
                     e.preventDefault();
-                    Router.go('/chats');
+                    Router.go('/messenger');
                 }
             }
         });

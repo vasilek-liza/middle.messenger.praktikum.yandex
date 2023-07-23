@@ -12,12 +12,12 @@ export default class NotFound extends Block {
     protected initChildren(): void {
         this.children.link = new Link({
             text: 'Назад к чатам',
-            href: '../chats',
+            href: '../messenger',
             className: 'link-blue',
             events: { 
                 click: (e) => {
                     e.preventDefault();
-                    Router.go('../chats');
+                    Router.go('../messenger');
                 }
             }
         })

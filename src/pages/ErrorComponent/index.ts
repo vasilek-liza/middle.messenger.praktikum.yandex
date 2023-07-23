@@ -12,12 +12,12 @@ export default class ErrorComponent extends Block {
     protected initChildren() {
         this.children.link = new Link({
             text: 'Назад к чатам',
-            href: '../chats',
+            href: '../messenger',
             className: 'link-blue',
             events: { 
                 click: (e) => {
                     e.preventDefault();
-                    Router.go('../chats');
+                    Router.go('../messenger');
                 }
             }
         })

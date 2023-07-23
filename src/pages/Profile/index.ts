@@ -1,5 +1,5 @@
 import { InfoBlock } from "./components/InfoBlock";
-import AvatarProfile from "./components/AvatarProfile";
+import { AvatarProfile } from "./components/AvatarProfile";
 import Block from "../../utils/Block";
 import ActionsBlock from "./components/ActionsBlock";
 import AuthControllers from "../../controllers/AuthControllers";
@@ -15,16 +15,16 @@ export default class Profile extends Block {
 
     protected initChildren() {
         this.children.info = new InfoBlock({});
-        this.children.avatar = new AvatarProfile({ userName: 'Иван' });
+        this.children.avatar = new AvatarProfile({});
         this.children.actions = new ActionsBlock();
         this.children.link = new Link({
             text: 'Назад к чатам',
-            href: '../chats',
+            href: '../messenger',
             className: 'link-blue',
             events: { 
                 click: (e) => {
                     e.preventDefault();
-                    Router.go('../chats');
+                    Router.go('../messenger');
                 }
             }
         })
