@@ -113,7 +113,8 @@ class BaseCurrentChat extends Block {
             text: 'Удалить чат',
             events: { 
                 click: () => {
-                    this.removeChat()
+                    this.removeChat();
+                    store.set('currentChat', undefined);
                 }
             }
         });
@@ -124,11 +125,11 @@ class BaseCurrentChat extends Block {
     }
 }
 function mapStateProps(state: State) {
-    const id = store.getState().currentChat?.id;
+    const id = state.currentChat?.id;
     if (id) {
         return { messageList: [...state.messageList[id]], id}
     }
-    return {...state.messageList}
+    return { id }
 }
 
 export const CurrentChat = withStore(mapStateProps)(BaseCurrentChat);
