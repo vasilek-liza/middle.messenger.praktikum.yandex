@@ -10,7 +10,7 @@ import validateScheme from "../../utils/validateScheme";
 import { template } from './changeUserData.tmpl';
 
 export default class ChangeUserData extends Block {
-    constructor(props: any) {
+    constructor(props = {}) {
         super(props)
     }
 

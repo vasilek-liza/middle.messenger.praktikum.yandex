@@ -20,7 +20,7 @@ class BaseCurrentChat extends Block {
         const chatId = state.currentChat?.id;
         const userLogin = prompt('Введите логин пользователя');
         if (userLogin && chatId) {
-            const user = await ChatsControllers.getUserIdByLogin({login: userLogin}) as { id: number}[];
+            const user = await ChatsControllers.getUserIdByLogin({login: userLogin}) as { id: number }[];
             await ChatsControllers.addUser({users:[user[0].id], chatId})
                 .then(() => {
                     alert('Пользователь добавлен')
@@ -78,16 +78,14 @@ class BaseCurrentChat extends Block {
                 type: 'submit',
                 events: { 
                     click: (e) => {
-                        console.log(e)
                         e.preventDefault();
                         const input = this.children.messageInput as any;
                         if (input?.element?.value.length > 0) {
-                        const chatId = store.getState().currentChat!.id!;
-                        sendMessage(chatId, input.element.value);
-
-                        ChatsControllers.getChats().finally(() => {
-                            input.element.value = "";
-                        });
+                            const chatId = store.getState().currentChat!.id!;
+                            sendMessage(chatId, input.element.value);
+                            ChatsControllers.getChats().finally(() => {
+                                input.element.value = "";
+                            });
                         }
                     }
                 }

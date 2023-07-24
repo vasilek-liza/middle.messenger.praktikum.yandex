@@ -9,7 +9,7 @@ import validateScheme from "../../utils/validateScheme";
 
 import { template } from './ChangePassword.tmpl';
 export default class ChangePassword extends Block {
-    constructor(props: any) {
+    constructor(props = {}) {
         super(props)
     }
 

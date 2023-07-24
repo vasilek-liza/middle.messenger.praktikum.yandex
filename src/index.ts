@@ -21,17 +21,17 @@ document.addEventListener('DOMContentLoaded', async() => {
         .use('/settings', ChangeUserData)
         .use('/change-password', ChangePassword)
         .use('/error', ErrorComponent)
-        .use('/*', NotFound)
+        .use('/not-found', NotFound)
         .use('/', Main)
         .start();
 
     try {
         await AuthControllers.fetchUser();
-        if (store.getState()?.user?.id) {
-            Router.start();
-        } else {
+        if ((!store.getState()?.user?.id && window.location.pathname !== '/sign-up')) {
             Router.start();
             Router.go('/login');
+        } else {
+            Router.start();
         }
     } catch (e) {
         Router.start();

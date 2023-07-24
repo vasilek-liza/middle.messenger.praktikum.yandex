@@ -86,7 +86,8 @@ export class CustomRouter {
       const route = this.getRoute(pathname);
   
       if (!route) {
-        return;
+        this._onRoute('/not-found');
+        return
       }
   
       if (this.currentRoute && this.currentRoute !== route) {

@@ -4,16 +4,18 @@ import { UsersAPI } from "../api/UsersAPI";
 import { store } from "../store";
 import { newConnect } from "../utils/Websockets";
 
+export interface LastMessage {
+    user: IUser,
+    time: string;
+    content: string;
+}
+
 export interface ChatList {
     id: number;
     title: string;
     avatar: string;
     unread_count: number;
-    last_message: {
-        user: IUser,
-        time: string;
-        content: string;
-    };
+    last_message: LastMessage;
 }
 
 interface UsersToChat {
@@ -45,8 +47,8 @@ class ChatsController {
                 await newConnect(chat.id, token);
             });
             store.set('chats', { chatList });
-        } catch (e: any) {
-            alert(e);
+        } catch (e) {
+            console.log(e);
         }
     }
 
@@ -54,7 +56,7 @@ class ChatsController {
         try {
             await this.api.postCreateChats(data);
             this.getChats().then();
-        } catch (e: any) {
+        } catch (e) {
             alert(e);
         }
     }
@@ -71,25 +73,27 @@ class ChatsController {
     }
 
     async getUserIdByLogin(data: { login: string}) {
-        const user = await this.apiUser.postSearchUser(data)
-            .catch(() => alert('Пользователь c таким логином не найден'));
-
-        return user
+        try {
+            const user = await this.apiUser.postSearchUser(data);
+            return user
+        } catch (e) {
+            alert('Пользователь c таким логином не найден')
+        }
     }
 
     async removeUserFromChart(data: UsersToChat) {
-        const user = await this.api.deleteUsers(data)
-            .catch(() => alert('Не удалось удалить пользователя'));
-        this.getChatUsers(data.chatId)
-
-        return user
+        try {
+            const user = await this.api.deleteUsers(data);
+            this.getChatUsers(data.chatId);
+            return user
+        } catch (e) {
+            alert('Не удалось удалить пользователя')
+        }
     }
 
     async removeChart(data: { chatId: number }) {
         await this.api.deleteChats(data)
-            .then(() => {
-                alert('Чат удален')
-            })
+            .then(() => alert('Чат удален'))
             .catch(() => alert('Не удалось удалить чат'));
         this.getChats();
     }

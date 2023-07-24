@@ -31,7 +31,7 @@ export default class ActionsBlock extends Block {
             events: { 
                 click: (e) => {
                     e.preventDefault();
-                    Router.go('../change-password');
+                    Router.go('/change-password');
                 }
             }
         });
@@ -42,7 +42,7 @@ export default class ActionsBlock extends Block {
             events: { 
                 click: (e) => {
                     e.preventDefault();
-                    Router.go('../settings');
+                    Router.go('/settings');
                 }
             }
         })

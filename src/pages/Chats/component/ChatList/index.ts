@@ -14,8 +14,10 @@ class BaseChatList extends Block {
         super({
             ...props,
             events: {
-                click: (e: any) => {
-                    if (e.target?.id) store.set('currentChat', { id: e.target?.id});
+                click: (e: { target: {id: number}}) => {
+                    if (e.target?.id) {
+                        store.set('currentChat', { id: e.target?.id})
+                    }
                 }
             },
         })
@@ -47,7 +49,7 @@ class BaseChatList extends Block {
             events: { 
                 click: (e) => {
                     e.preventDefault();
-                    Router.go('../profile');
+                    Router.go('/profile');
                 }
             }
         });

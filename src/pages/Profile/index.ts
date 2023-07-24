@@ -24,7 +24,7 @@ export default class Profile extends Block {
             events: { 
                 click: (e) => {
                     e.preventDefault();
-                    Router.go('../messenger');
+                    Router.go('/messenger');
                 }
             }
         })

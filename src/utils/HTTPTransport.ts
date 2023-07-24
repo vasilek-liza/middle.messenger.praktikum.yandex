@@ -41,12 +41,12 @@ export class HTTPTransport {
         );
     };
     
-    post: HTTPMethod = (url, options): any => {
+    post: HTTPMethod = (url, options) => {
         return this.request(
             this.endpoint + url,
             {
                 ...options,
-                method: METHODS.POST,
+                method: METHODS.POST
             }
         );
     };
@@ -83,11 +83,11 @@ export class HTTPTransport {
 
         xhr.onreadystatechange = () => {
             if (xhr.readyState === XMLHttpRequest.DONE) {
-            if (xhr.status < 400) {
-                resolve(xhr.response);
-            } else {
-                reject(xhr.response);
-            }
+                if (xhr.status < 400) {
+                    resolve(xhr.response);
+                } else {
+                    reject(xhr.response);
+                }
             }
         };
 

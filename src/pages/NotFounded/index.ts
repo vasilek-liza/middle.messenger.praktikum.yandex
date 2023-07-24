@@ -5,7 +5,7 @@ import { Router } from "../../utils/Router";
 import { template } from './not-found.tmpl';
 
 export default class NotFound extends Block {
-    constructor(props: any) {
+    constructor(props = {}) {
         super(props);
     }
 
@@ -17,7 +17,7 @@ export default class NotFound extends Block {
             events: { 
                 click: (e) => {
                     e.preventDefault();
-                    Router.go('../messenger');
+                    Router.go('/messenger');
                 }
             }
         })

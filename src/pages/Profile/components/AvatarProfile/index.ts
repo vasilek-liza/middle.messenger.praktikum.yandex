@@ -19,7 +19,7 @@ class BaseAvatarProfile extends Block {
             className: "user-avatar__input",
             placeholder: 'Изменить аватар',
             events: {
-                change: (evt) => this.changeImg(evt),
+                change: (e) => this.changeImg(e),
             },
         });
         this.children.avatarImg = new Avatar({ image: `${emptyAvatar}`, alt: 'avatar' })
@@ -31,9 +31,7 @@ class BaseAvatarProfile extends Block {
         if (target.files && target.files.length > 0) {
             const file = target.files[0];
             const formData = new FormData();
-    
             formData.append("avatar", file);
-    
             UserControllers.changeUserAvatar(formData).finally(() => {
                 target.value = "";
             });

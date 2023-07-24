@@ -12,7 +12,7 @@ import validateScheme from "../../utils/validateScheme";
 import { template } from './logIn.tmpl';
 
 export default class LogIn extends Block {
-    constructor(props: any) {
+    constructor(props = {}) {
         super(props)
     }
 
@@ -58,7 +58,6 @@ export default class LogIn extends Block {
                         });
                     }
                     getErrorText(re);
-                    console.log(re)
                     console.log(formData);
 
                     if (!re) {
@@ -74,7 +73,7 @@ export default class LogIn extends Block {
             events: { 
                 click: (e) => {
                     e.preventDefault();
-                    Router.go('../signup');
+                    Router.go('/sign-up');
                 }
             }
         })

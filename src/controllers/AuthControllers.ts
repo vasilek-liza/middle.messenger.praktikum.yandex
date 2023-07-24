@@ -23,7 +23,7 @@ class AuthController {
         try {
             await this.api.signup(data);
             await this.fetchUser();
-            Router.go('/login');
+            Router.go('/messenger');
         } catch (error) {
             console.log(error)
         }

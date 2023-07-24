@@ -12,7 +12,7 @@ import validateScheme from "../../utils/validateScheme";
 import { template } from './signUp.tmpl';
 
 export default class SignUp extends Block {
-    constructor(props: any) {
+    constructor(props = {}) {
         super(props)
     }
     
@@ -159,7 +159,7 @@ export default class SignUp extends Block {
             events: { 
                 click: (e) => {
                     e.preventDefault();
-                    Router.go('../profile');
+                    Router.go('/profile');
                 }
             }
         })

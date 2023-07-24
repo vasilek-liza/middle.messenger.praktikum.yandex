@@ -43,11 +43,11 @@ export default class Main extends Block {
         });
         this.children.linkNotFound = new Link({ 
             text: 'Ошибка 404', 
-            href: '/*',
+            href: '/not-found',
             events: { 
                 click: (e) => {
                     e.preventDefault();
-                    Router.go('/*');
+                    Router.go('/not-found');
                 }
             }
         });
