@@ -1,4 +1,4 @@
-### ссылка на пр второго спринта: https://github.com/vasilek-liza/middle.messenger.praktikum.yandex/pull/3
+### ссылка на пр третьего спринта: https://github.com/vasilek-liza/middle.messenger.praktikum.yandex/pull/4
 ### учебный проект: веб-приложение "Чат"
 
 ### ссылка на задеплоенный проект: https://sparkling-beignet-d22662.netlify.app
