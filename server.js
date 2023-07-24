@@ -11,7 +11,7 @@ app.get('*', (_, res) => {
 });
 
 app.use((req, res) => {
-  res.status(404).send('./dist');
+  res.status(404).send('./dist/index.html');
 });
 
 app.listen(PORT, function () {
