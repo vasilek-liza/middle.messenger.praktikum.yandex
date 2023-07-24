@@ -79,6 +79,8 @@ class ChatsController {
         } catch (e) {
             alert('Пользователь c таким логином не найден')
         }
+
+        return
     }
 
     async removeUserFromChart(data: UsersToChat) {
@@ -89,6 +91,8 @@ class ChatsController {
         } catch (e) {
             alert('Не удалось удалить пользователя')
         }
+
+        return
     }
 
     async removeChart(data: { chatId: number }) {
