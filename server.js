@@ -1,10 +1,13 @@
 const express = require('express');
-const PORT = 3000;
+const path = require('path');
 
 const app = express();
- 
-app.use(express.static(__dirname + "/dist"));
- 
-app.listen(PORT, () => {
-  console.log(`Мой текст в логе после запуска ${PORT}!`);
+const PORT = 3000;
+
+app.use(express.static(path.join(__dirname, 'dist')));
+
+app.get('*', (_, res) => {
+  res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
+
+app.listen(process.env.PORT || PORT);
