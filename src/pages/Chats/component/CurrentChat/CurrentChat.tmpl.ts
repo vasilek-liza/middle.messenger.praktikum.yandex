@@ -29,10 +29,10 @@ export const template = `
                 </ul>
             </div>
             <div class='current-chat__send-message'>
-                <form id='form-message' class='current-chat__form'>
+                <div id='form-message' class='current-chat__form'>
                     {{{messageInput}}}
                     <span class='error' id="error"></span>
-                </form>
+                </div>
                 {{{buttonSend}}}
             </div>
         {{else}}

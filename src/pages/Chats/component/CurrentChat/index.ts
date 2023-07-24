@@ -42,6 +42,17 @@ class BaseCurrentChat extends Block {
         }
     }
 
+    onSubmit() {
+        const element = this.children.messageInput.element as HTMLInputElement;
+        if (element.value) {
+            const chatId = store.getState().currentChat!.id;
+            sendMessage(chatId, element.value);
+            ChatsControllers.getChats().finally(() => {
+                element.value = "";
+            });
+        }
+    }
+
     async removeUserToChat() {
         const state = store.getState();
         const chatId = state.currentChat?.id;
@@ -71,6 +82,14 @@ class BaseCurrentChat extends Block {
             name: 'message',
             placeholder: 'Сообщение',
             className: 'grey-input',
+            events: { 
+                keyup: (e: Event) => {
+                    e.preventDefault();
+                    if ((e as KeyboardEvent).code === 'Enter') {
+                        this.onSubmit()
+                    }
+                }
+            }
         });
         this.children.buttonSend = new Button(
             {
@@ -79,14 +98,7 @@ class BaseCurrentChat extends Block {
                 events: { 
                     click: (e) => {
                         e.preventDefault();
-                        const input = this.children.messageInput as any;
-                        if (input?.element?.value.length > 0) {
-                            const chatId = store.getState().currentChat!.id!;
-                            sendMessage(chatId, input.element.value);
-                            ChatsControllers.getChats().finally(() => {
-                                input.element.value = "";
-                            });
-                        }
+                        this.onSubmit();
                     }
                 }
             }

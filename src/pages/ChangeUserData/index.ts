@@ -1,7 +1,9 @@
+import { IUser } from "../../api/AuthAPI";
 import { UserProfile } from "../../api/UsersAPI";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
 import UserControllers from "../../controllers/UserControllers";
+import { store } from "../../store";
 import Block from "../../utils/Block";
 import { getErrorText } from "../../utils/getErrorText";
 import { getFormData } from "../../utils/getFotmData";
@@ -14,10 +16,16 @@ export default class ChangeUserData extends Block {
         super(props)
     }
 
+    getCurrentValue(value: keyof IUser) {
+        const state = store.getState();
+        return state.user?.[value]
+    }
+
     protected initChildren() {
         this.children.first_name = new Input({ 
             placeholder: 'Имя', 
             name: 'first_name',
+            value: this.getCurrentValue('first_name'),
             events: {
                 blur: () => {
                     const formData = getFormData('form-change-data');
@@ -29,6 +37,7 @@ export default class ChangeUserData extends Block {
         this.children.second_name = new Input({ 
             placeholder: 'Фамилия', 
             name: 'second_name',
+            value: this.getCurrentValue('second_name'),
             events: {
                 blur: () => {
                     const formData = getFormData('form-change-data');
@@ -40,6 +49,7 @@ export default class ChangeUserData extends Block {
         this.children.login = new Input({ 
             placeholder: 'Логин', 
             name: 'login',
+            value: this.getCurrentValue('login'),
             events: {
                 blur: () => {
                     const formData = getFormData('form-change-data');
@@ -51,6 +61,7 @@ export default class ChangeUserData extends Block {
         this.children.email = new Input({ 
             placeholder: 'Почта', 
             name: 'email',
+            value: this.getCurrentValue('email'),
             events: {
                 blur: () => {
                     const formData = getFormData('form-change-data');
@@ -62,10 +73,12 @@ export default class ChangeUserData extends Block {
         this.children.display_name = new Input({ 
             placeholder: 'Имя в чате', 
             name: 'display_name',
+            value: this.getCurrentValue('display_name'),
         });
         this.children.phone = new Input({ 
             placeholder: 'Телефон', 
             name: 'phone',
+            value: this.getCurrentValue('phone'),
             events: {
                 blur: () => {
                     const formData = getFormData('form-change-data');
