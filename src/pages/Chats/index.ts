@@ -1,31 +1,19 @@
-import Link from "../../components/Link";
-import CurrentChat from "./component/CurrentChat";
-import ChatList from "./component/ChatList";
+import { State } from "../../types";
+import { withStore } from "../../store";
+import { CurrentChat } from "./component/CurrentChat";
+import { ChatList } from "./component/ChatList";
 import Block from "../../utils/Block";
-import { chatsList } from "./component/ChatList/utils";
-import imgSend from "../../assets/img/send.svg";
 import './Chats.scss';
 
 import { template } from './chats.tmpl';
-export default class Chats extends Block {
-    constructor(props: { title: string }) {
+class BaseChats extends Block {
+    constructor(props: any) {
         super(props);
     }
 
     protected initChildren(): void {
-        this.children.currentChat = new CurrentChat({ 
-            userProfile: chatsList[0].name,
-            incomingMessages: chatsList[0].incomingMessages,
-            outgoingMessages: chatsList[0].outgoingMessages,
-            imgSend: imgSend
-        });
-        this.children.chatList = new ChatList({ chatsList }),
-        this.children.link = new Link ({
-            text: 'Назад к чатам',
-            href: '../chats',
-            className: 'link-blue',
-        });
-
+        this.children.currentChat = new CurrentChat({});
+        this.children.chatList = new ChatList({})
     }
 
     render() {
@@ -33,3 +21,8 @@ export default class Chats extends Block {
     }
 }
 
+function mapStateProps(state: State) {
+    return {...state.chats}
+}
+
+export const Chats = withStore(mapStateProps)(BaseChats);

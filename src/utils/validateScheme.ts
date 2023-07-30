@@ -45,14 +45,6 @@ const validateScheme = ({
             } else {
                 return '';
             }
-        case 'phone':
-            if (inputValue.length < 10 || inputValue.length > 15) {
-                return 'От 10 до 15 символов';
-            } else if (!inputValue.match(/^(\+|\d)(\d+$)/)) {
-                return 'Только цифры или первый +';
-            } else {
-                return '';
-            }
         case 'message':
             if (!inputValue) {
                 return 'Введите сообщение';
