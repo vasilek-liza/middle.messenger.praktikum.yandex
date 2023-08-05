@@ -4,7 +4,7 @@ import './Button.scss';
 import { template } from './Button.tmpl';
 
 interface IButtonProps {
-    text: string,
+    text: number,
     type?: string,
     events?: {
         click?: (e: Event) => undefined | void,
