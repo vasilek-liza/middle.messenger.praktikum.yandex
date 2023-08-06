@@ -24,8 +24,6 @@
       "sourceMap": true,
       "strictNullChecks": true
   },
-  "include": [
-    "src"
-  ],
+  "include": ["src/**/*.ts", "tests/**/*.ts", "custom.d.ts"],
   "exclude": ["node_modules"]
 }
