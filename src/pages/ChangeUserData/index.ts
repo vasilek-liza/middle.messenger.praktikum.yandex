@@ -88,7 +88,7 @@ export default class ChangeUserData extends Block {
             },
         });
         this.children.save = new Button({ 
-            text: 'Сохранить', 
+            // text: 'Сохранить', 
             type: 'submit',
             events: { 
                 click: (e) => {
