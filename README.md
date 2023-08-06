@@ -1,4 +1,4 @@
-### ссылка на пр третьего спринта: https://github.com/vasilek-liza/middle.messenger.praktikum.yandex/pull/4
+### ссылка на пр четвертого спринта: https://github.com/vasilek-liza/middle.messenger.praktikum.yandex/pull/5
 ### учебный проект: веб-приложение "Чат"
 
 ### ссылка на задеплоенный проект: https://sparkling-beignet-d22662.netlify.app
@@ -54,3 +54,10 @@ ui взят из готовых решений https://www.figma.com/file/gInPV4
 Добавлена работа с чатами (список чатов пользователя, создать новый чат, добавить пользователя в чат, удалить пользователя из чата).
 
 Подключены WebSocket
+
+
+Настроен pre-commit
+
+Произведен audit пакетов
+
+Тестами покрыты роутер, компонент Button и Link, модуль отправки запросов, set из utils. Используется Mocha и Chai. 
