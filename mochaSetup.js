@@ -11,3 +11,7 @@ global.DocumentFragment = window.DocumentFragment;
 require.extensions['.scss'] = function () {
     module.exports = () => ({});
 }
+
+require.extensions['.svg'] = function () { 
+    module.exports = () => ({}); 
+}
