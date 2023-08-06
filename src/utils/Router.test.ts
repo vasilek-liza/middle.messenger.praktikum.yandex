@@ -1,37 +1,31 @@
 import { Router } from './Router';
 import Block from './Block';
+
 import { expect } from 'chai';
 import sinon from 'sinon';
-import { JSDOM } from 'jsdom';
 
-const dom = new JSDOM('<!DOCTYPE html><html><body></body></html>');
-(global as any).document = dom.window.document;
-(global as any).window = dom.window;
-
-class FakePage extends Block {
-    render(): DocumentFragment {
-        return new DocumentFragment();
-    }
-}
-
-document.body.innerHTML = '<div class="app"></div>';
-const router = Router;
+const fake = sinon.fake.returns(document.createElement('div'));
+const fakeComponent = class extends Block {
+    getContent = fake;
+};
 
 describe('Router', () => {
-    it('use() should return Router instance', () => {
-        const result = router.use('/test', FakePage);
-        expect(result).to.eq(router);
+    it('Works correctly use()', () => {
+        const res = Router.use('/', fakeComponent);
+    
+        expect(res).to.equal(Router);
     });
 
-    it('transition to page change history', () => {
-        const pushStateStub = sinon.stub(window.history, 'pushState');
-
-        window.history.pushState({}, 'Page', '/');
-        window.history.pushState({}, 'OtherPage', '/otherpage');
-        window.history.pushState({}, 'Test', '/test');
-
-        expect(pushStateStub.callCount).to.eq(3);
-
-        pushStateStub.restore();
+    it('Works correctly start()', () => {
+        Router.use('/', fakeComponent);
+        Router.start();
+    
+        expect(fake.callCount).to.equal(1);
+    });
+    
+    it('Works correctly back()', () => {
+        Router.back();
+    
+        expect(fake.callCount).to.equal(1);
     });
 });
