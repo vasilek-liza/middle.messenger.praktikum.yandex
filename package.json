@@ -10,12 +10,9 @@
     "start": "vite build && node server.js",
     "lint": "eslint . --ext .ts",
     "lint-and-fix": "eslint . --ext .ts --fix",
-    "stylelint": "npx stylelint **/*.scss"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run test"
-    }
+    "stylelint": "npx stylelint **/*.scss",
+    "precommit": "npm run test && npm run lint && npm run stylelint",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@types/chai": "^4.3.5",
