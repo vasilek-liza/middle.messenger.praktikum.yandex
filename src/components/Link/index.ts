@@ -5,7 +5,7 @@ import { template } from './Link.tmpl';
 
 interface ILinkProps {
     text: string,
-    href: number,
+    href: string,
     className?: string,
     events?: {
         click?: (e: Event) => undefined | void,
