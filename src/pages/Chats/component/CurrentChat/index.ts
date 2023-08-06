@@ -23,7 +23,7 @@ class BaseCurrentChat extends Block {
             const user = await ChatsControllers.getUserIdByLogin({login: userLogin}) as { id: number }[];
             await ChatsControllers.addUser({users:[user[0].id], chatId})
                 .then(() => {
-                    alert('Пользователь добавлен')
+                    ale('Пользователь добавлен')
                 })
                 .catch(() => {
                     aler('Невозможно добавить пользователя')
